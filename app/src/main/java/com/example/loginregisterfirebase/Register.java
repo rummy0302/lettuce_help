@@ -76,7 +76,7 @@ public class Register extends AppCompatActivity {
 
             User user= new User(fullnameTxt,emailTxt,phoneTxt,passwordTxt,conPsswordTxt,"Volunteer");
 
-            databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.hasChild("user")) {
@@ -86,10 +86,10 @@ public class Register extends AppCompatActivity {
 
                         if (staffquery.isChecked()){
                             User userstaff= new User(fullnameTxt,emailTxt,phoneTxt,passwordTxt,conPsswordTxt,"Staff");
-                            databaseReference.push().setValue(userstaff);
+                            databaseReference.child("Staff").push().setValue(userstaff);
                         }
                         else{
-                            databaseReference.push().setValue(user);
+                            databaseReference.child("Volunteers").push().setValue(user);
                         }
                         Toast.makeText(Register.this,"User registered successfully", Toast.LENGTH_SHORT).show();
                         finish();
