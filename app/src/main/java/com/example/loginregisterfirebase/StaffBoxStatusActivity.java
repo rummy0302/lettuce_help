@@ -1,20 +1,36 @@
 package com.example.loginregisterfirebase;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toolbar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class StaffBoxStatusActivity extends AppCompatActivity {
-    //ArrayList <type> variable_name
-    //The ArrayList holds all the BoxStatusVariables and sends it to the Adapter
-    private ArrayList<BoxStatusVariables> BoxStatusList= new ArrayList<>();
-    //This is a very brute force method... But my images are aligned with my For-Loop iterations in SetBoxStatus
-    private int[] BoxImages={R.drawable.ic_launcher_background,R.drawable.ic_launcher_foreground,R.drawable.ic_tester};
+
+    RecyclerView myRecyclerView;
+    MyAdapter adapter;
+    List<MyDataSetGet> listData;
+    FirebaseDatabase FDB;
+    DatabaseReference DBR;
 
 
     @Override
@@ -22,27 +38,100 @@ public class StaffBoxStatusActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_boxstatus);
-        RecyclerView recyclerView= findViewById(R.id.recyclerview);
-        BoxStatusList=new ArrayList<>();
-
-        setBoxStatusInfo();
-        RecyclerAdapter adapter= new RecyclerAdapter(this,BoxStatusList);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        Toolbar toolbar = findViewById(R.id.Toolbar);
+//        setSupportActionBar(toolbar);
 
 
+        myRecyclerView = findViewById(R.id.myRecycler);
+        myRecyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager LM= new LinearLayoutManager(getApplicationContext());
+        myRecyclerView.setLayoutManager(LM);
+        myRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        myRecyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayoutManager.VERTICAL));
+
+        listData= new ArrayList<>();
+        adapter=new MyAdapter(listData);
+        FDB =FirebaseDatabase.getInstance("https://loginregister-2f629-default-rtdb.firebaseio.com/");
+        GetDataFirebase();
     }
 
-    private void setBoxStatusInfo(){
-        String[] RV_Box_Address= getResources().getStringArray(R.array.Box_Address_RV);
-        String[] RV_Postal_Code= getResources().getStringArray(R.array.Postal_Code_RV);
-        String[] RV_Box_Status= getResources().getStringArray(R.array.Box_Status_RV);
+    void GetDataFirebase(){
 
-        for (int i = 0 ; i<RV_Box_Address.length;i++){
-            BoxStatusList.add(new BoxStatusVariables(RV_Box_Address[i],
-                            RV_Postal_Code[i],
-                            RV_Box_Status[i],
-                            BoxImages[i]));
+        DBR= FDB.getReference("Boxes");
+        DBR.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot,String s) {
+                MyDataSetGet data= new MyDataSetGet();
+                data= snapshot.getValue(MyDataSetGet.class);
+                listData.add(data);
+                myRecyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
+
+        List<MyDataSetGet> listArray;
+        public MyAdapter (List<MyDataSetGet> List){
+            this.listArray=List;
+        }
+
+        @Override
+        public MyAdapter.MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.box_status_items,parent,false);
+            return new MyViewholder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(MyAdapter.MyViewholder holder, int position) {
+            MyDataSetGet data= listArray.get(position);
+
+            holder.BoxAddress.setText(data.getAddress());
+
+        }
+
+        public class MyViewholder extends RecyclerView.ViewHolder{
+
+            TextView BoxAddress;
+            TextView BoxPostalCode;
+            TextView BoxStatus;
+            public MyViewholder(View itemView){
+                super(itemView);
+                BoxAddress= itemView.findViewById(R.id.RVBoxAddress);
+                BoxPostalCode=itemView.findViewById(R.id.RVPostalCode);
+                BoxStatus=itemView.findViewById(R.id.RVBoxStatus);
+
+
+            }
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return listArray.size();
         }
     }
+
+
+
 }
