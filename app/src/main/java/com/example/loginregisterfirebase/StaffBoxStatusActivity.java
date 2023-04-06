@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -61,8 +60,7 @@ public class StaffBoxStatusActivity extends AppCompatActivity {
         DBR.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot,String s) {
-                MyDataSetGet data= new MyDataSetGet();
-                data= snapshot.getValue(MyDataSetGet.class);
+                MyDataSetGet data= snapshot.getValue(MyDataSetGet.class);
                 listData.add(data);
                 myRecyclerView.setAdapter(adapter);
             }
@@ -105,8 +103,9 @@ public class StaffBoxStatusActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(MyAdapter.MyViewholder holder, int position) {
             MyDataSetGet data= listArray.get(position);
-
             holder.BoxAddress.setText(data.getAddress());
+            holder.BoxStatus.setText(data.getStatus());
+            holder.BoxPostalCode.setText(data.getBoxPostalCode());
 
         }
 
@@ -115,10 +114,11 @@ public class StaffBoxStatusActivity extends AppCompatActivity {
             TextView BoxAddress;
             TextView BoxPostalCode;
             TextView BoxStatus;
+
             public MyViewholder(View itemView){
                 super(itemView);
                 BoxAddress= itemView.findViewById(R.id.RVBoxAddress);
-                BoxPostalCode=itemView.findViewById(R.id.RVPostalCode);
+                BoxPostalCode=itemView.findViewById(R.id.RVPC);
                 BoxStatus=itemView.findViewById(R.id.RVBoxStatus);
 
 

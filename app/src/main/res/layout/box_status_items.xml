@@ -40,15 +40,15 @@
                 android:textColor="@color/platinum"
                 android:textSize="28dp"
                 app:layout_constraintStart_toEndOf="@+id/RVImage"
-                app:layout_constraintTop_toBottomOf="@+id/RVPostalCode" />
+                app:layout_constraintTop_toBottomOf="@+id/RVPC" />
 
             <TextView
-                android:id="@+id/RVPostalCode"
+                android:id="@+id/RVPC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="8dp"
-                android:text="RVPostalCode"
+                android:text="RVBoxPostalCode"
                 android:textColor="@color/platinum"
                 android:textSize="28dp"
                 app:layout_constraintStart_toEndOf="@+id/RVImage"

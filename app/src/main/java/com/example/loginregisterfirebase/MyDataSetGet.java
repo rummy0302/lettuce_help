@@ -4,31 +4,27 @@ public class MyDataSetGet {
 
     //Address, Postalcode and Status are keywords in the database
     String Address;
-    String Postalcode;
     String Status;
+    String BoxPostalCode;
+
+    public MyDataSetGet(){}
+
+    public MyDataSetGet(String address, String status, String postalCode) {
+        Address = address;
+        Status = status;
+        BoxPostalCode = postalCode;
+    }
 
     public String getAddress() {
         return Address;
     }
 
-    public void setAddress(String address) {
-        Address = address;
-    }
-
-    public String getPostalcode() {
-        return Postalcode;
-    }
-
-    public void setPostalcode(String postalcode) {
-        Postalcode = postalcode;
+    public String getBoxPostalCode() {
+        return BoxPostalCode;
     }
 
     public String getStatus() {
         return Status;
-    }
-
-    public void setStatus(String status) {
-        Status = status;
     }
 
 }
