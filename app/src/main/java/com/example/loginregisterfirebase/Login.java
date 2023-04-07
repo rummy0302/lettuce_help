@@ -22,6 +22,15 @@ public class  Login extends AppCompatActivity {
         final Button loginBtn = findViewById(R.id.loginBtn);
         final TextView registerNowBtn = findViewById(R.id.registerNowBtn);
 
+        final Button  BSbtn = findViewById(R.id.Box_status_btn);
+
+        BSbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this,StaffBoxStatusActivity.class));
+            }
+        });
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

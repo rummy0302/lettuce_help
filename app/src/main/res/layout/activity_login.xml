@@ -24,7 +24,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType= "textEmailAddress"
+        android:inputType="textEmailAddress"
         android:id="@+id/userid"
         android:hint="Email"
         android:maxLines="1"
@@ -77,5 +77,11 @@
             android:textStyle="bold" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/Box_status_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </LinearLayout>

@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">LoginRegisterFirebase</string>
+    <string-array name="Box_Address_RV">
+        <item> Yishun </item>
+        <item> Novena </item>
+        <item> Yew Tee </item>
+    </string-array>
+
+    <string-array name="Postal_Code_RV">
+        <item> 809320 </item>
+        <item> 748573</item>
+        <item> 567483 </item>
+    </string-array>
+
+    <string-array name="Box_Status_RV">
+        <item> 50% </item>
+        <item> 75%</item>
+        <item> 100% </item>
+    </string-array>
 </resources>
