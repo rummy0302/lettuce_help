@@ -20,51 +20,47 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/RVImage"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:padding="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-            <TextView
-                android:id="@+id/RVBoxStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
-                android:layout_marginTop="8dp"
-                android:text="RVBoxStatus"
-                android:textColor="@color/platinum"
-                android:textSize="28dp"
-                app:layout_constraintStart_toEndOf="@+id/RVImage"
-                app:layout_constraintTop_toBottomOf="@+id/RVPC" />
+<!--            <TextView-->
+<!--                android:id="@+id/RVBoxStatus"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="RVBoxStatus"-->
+<!--                android:textColor="@color/platinum"-->
+<!--                android:textSize="28dp"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/RVPC"-->
+<!--                tools:layout_editor_absoluteX="164dp" />-->
 
             <TextView
                 android:id="@+id/RVPC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="56dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="RVBoxPostalCode"
                 android:textColor="@color/platinum"
                 android:textSize="28dp"
-                app:layout_constraintStart_toEndOf="@+id/RVImage"
-                app:layout_constraintTop_toBottomOf="@+id/RVBoxAddress" />
+                app:layout_constraintTop_toBottomOf="@+id/RVBoxAddress"
+                tools:layout_editor_absoluteX="121dp" />
 
             <TextView
                 android:id="@+id/RVBoxAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:text="RVBoxAddress"
                 android:textColor="@color/platinum"
                 android:textSize="36dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/RVImage"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="112dp" />
+
+            <ProgressBar
+                android:id="@+id/RVBoxStatus"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="31dp"
+                tools:layout_editor_absoluteY="32dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

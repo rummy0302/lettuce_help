@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -78,6 +79,8 @@ public class StaffBoxStatusActivity extends AppCompatActivity {
         DBR= FDB.getReference("Boxes");
 
 
+
+
         DBR.addChildEventListener(new ChildEventListener() {
 
             //The event listener listens to the 'OnChildEvent', which is triggered everytime a new child node is added to the RealTimeDatabase
@@ -135,7 +138,7 @@ public class StaffBoxStatusActivity extends AppCompatActivity {
         public void onBindViewHolder(MyAdapter.MyViewholder holder, int position) {
             MyDataSetGet data= listArray.get(position);
             holder.BoxAddress.setText(data.getAddress());
-            holder.BoxStatus.setText(data.getStatus());
+            holder.BoxStatus.setProgress(data.getStatus());
             holder.BoxPostalCode.setText(data.getBoxPostalCode());
 
         }
@@ -144,7 +147,7 @@ public class StaffBoxStatusActivity extends AppCompatActivity {
 
             TextView BoxAddress;
             TextView BoxPostalCode;
-            TextView BoxStatus;
+            ProgressBar BoxStatus;
 
             public MyViewholder(View itemView){
                 super(itemView);
