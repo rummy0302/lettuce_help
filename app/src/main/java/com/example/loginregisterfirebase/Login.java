@@ -24,6 +24,8 @@ public class  Login extends AppCompatActivity {
 
         final Button  BSbtn = findViewById(R.id.Box_status_btn);
 
+        final Button Volunteerbtn = findViewById(R.id.volunteerbtn);
+        final Button Staffbtn = findViewById(R.id.staffbtn);
         BSbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +54,14 @@ public class  Login extends AppCompatActivity {
             public void onClick(View view) {
                 //open Register activity
                 startActivity(new Intent(Login.this,Register.class));
+            }
+        });
+
+        Volunteerbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //open Register activity
+                startActivity(new Intent(Login.this,VolunteerHome.class));
             }
         });
 
