@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -138,8 +136,10 @@ public class StaffBoxStatusActivity extends AppCompatActivity {
         public void onBindViewHolder(MyAdapter.MyViewholder holder, int position) {
             MyDataSetGet data= listArray.get(position);
             holder.BoxAddress.setText(data.getAddress());
-            holder.BoxStatus.setProgress(data.getStatus());
+            holder.BoxStatusBar.setProgress(100-data.getStatus());
             holder.BoxPostalCode.setText(data.getBoxPostalCode());
+            holder.BoxStatusString.setText(String.valueOf(100-(data.getStatus()))+"%");
+
 
         }
 
@@ -147,13 +147,16 @@ public class StaffBoxStatusActivity extends AppCompatActivity {
 
             TextView BoxAddress;
             TextView BoxPostalCode;
-            ProgressBar BoxStatus;
+
+            TextView BoxStatusString;
+            ProgressBar BoxStatusBar;
 
             public MyViewholder(View itemView){
                 super(itemView);
                 BoxAddress= itemView.findViewById(R.id.RVBoxAddress);
                 BoxPostalCode=itemView.findViewById(R.id.RVPC);
-                BoxStatus=itemView.findViewById(R.id.RVBoxStatus);
+                BoxStatusBar =itemView.findViewById(R.id.RVBoxStatus);
+                BoxStatusString =itemView.findViewById(R.id.RVStatusI);
 
 
             }
