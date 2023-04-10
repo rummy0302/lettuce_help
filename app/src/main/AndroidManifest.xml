@@ -14,10 +14,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".VolunteerReport"
-            android:exported="false" />
-        <activity
-            android:name=".Settings"
+            android:name=".PasswordSettings"
             android:exported="false" />
         <activity
             android:name=".StaffMap"

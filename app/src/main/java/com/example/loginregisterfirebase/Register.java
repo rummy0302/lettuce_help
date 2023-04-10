@@ -180,6 +180,7 @@ public class Register extends AppCompatActivity {
 
                     //Upload data to Realtime Database
                     User user = new User(fullname, email, contactnumber, password, conpassword, selectedusertype);
+                    String userid= firebaseUser.getUid();
                     DBR.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -188,10 +189,10 @@ public class Register extends AppCompatActivity {
                             } else {
 
                                 if (selectedusertype == R.id.Radio_Staff) {
-                                    User userstaff = new User(fullname, email, contactnumber, password, conpassword, selectedusertype);
-                                    DBR.child("Staff").push().setValue(userstaff);
+
+                                    DBR.child("Staff").child(userid).setValue(user);
                                 } else {
-                                    DBR.child("Volunteers").push().setValue(user);
+                                    DBR.child("Volunteers").child(userid).setValue(user);
                                 }
                                 finish();
                             }

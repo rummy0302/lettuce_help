@@ -47,12 +47,12 @@ public class  Login extends AppCompatActivity {
 
 
         //Settings //
-        final Button SB = findViewById(R.id.SBTN);
+        TextView SB = findViewById(R.id.SBTN);
 
         SB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this, Settings.class));
+                startActivity(new Intent(Login.this, PasswordSettings.class));
                 finish();
 
             }
