@@ -61,7 +61,15 @@ public class  Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //open Register activity
-                startActivity(new Intent(Login.this,VolunteerHome.class));
+                startActivity(new Intent(Login.this,VolunteerHomepage.class));
+            }
+        });
+
+        Staffbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //open Register activity
+                startActivity(new Intent(Login.this,StaffHomepage.class));
             }
         });
 
