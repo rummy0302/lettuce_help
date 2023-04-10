@@ -17,7 +17,7 @@ import android.util.Log;
 
 public class Maps1 extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "Maps1";
     private static final int ERROR_DIALOG_REQUEST = 9001;
     Button showMap;
     @Override
