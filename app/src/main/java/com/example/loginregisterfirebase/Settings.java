@@ -11,9 +11,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+//test
 public class Settings extends AppCompatActivity {
 
     private EditText mOldPasswordEditText;
@@ -42,7 +46,7 @@ public class Settings extends AppCompatActivity {
 
         // TODO: validate old and new passwords
          DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/");
-
+         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // reauthenticate the user with their old password
             AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), oldPassword);
