@@ -58,6 +58,15 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(@NonNull GoogleMap googleMap) {
         Toast.makeText(this, "YAY the Map works", Toast.LENGTH_SHORT).show();
         this.gMap = googleMap;
+        LatLng bank1 = new LatLng(1.432534,103.845675);
+        LatLng bank2 = new LatLng(1.319177,103.913078);
+        LatLng bank3 = new LatLng(1.352738,103.943831);
+        LatLng bank4 = new LatLng(1.36576,103.967129);
+        gMap.addMarker(new MarkerOptions().position(bank1).title("Foodbank Yishun"));
+        gMap.addMarker(new MarkerOptions().position(bank2).title("Foodbank Upper Changi"));
+        gMap.addMarker(new MarkerOptions().position(bank3).title("Tampines"));
+        gMap.addMarker(new MarkerOptions().position(bank4).title("Jewel"));
+
         if (mLocationPermissionsGranted) {
             getDeviceLocation();
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -89,8 +98,9 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "onComplete: found Location!");
                             Location currentLocation = (Location)task.getResult();
-                            moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),
+                            moveCamera(new LatLng(1.340831,103.963343),
                                     DEFAULT_ZOOM);
+
                         } else {
                             Log.d(TAG, "onComplete: current location is null");
                             Toast.makeText(Maps.this, "unable to get current Location", Toast.LENGTH_SHORT).show();
