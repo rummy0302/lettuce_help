@@ -23,7 +23,7 @@ public class Maps1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps1);
+        setContentView(R.layout.del_activity_maps1);
 
         showMap = findViewById(R.id.showMap);
         showMap.setOnClickListener((new View.OnClickListener() {

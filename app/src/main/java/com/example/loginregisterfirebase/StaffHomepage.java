@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,7 +36,7 @@ public class StaffHomepage extends AppCompatActivity {
     MyAdapter adapter;
 
     // Declare variable 'listData' of type 'List' class that stores objects of the custom data class 'MyDataSetGet'
-    List<MyDataSetGet> listData;
+    List<RecyclerViewItems> listData;
 
     FirebaseDatabase FDB;
     DatabaseReference DBR;
@@ -73,8 +74,12 @@ public class StaffHomepage extends AppCompatActivity {
         //Obtain firebase data
         GetDataFirebase();
 
-        final Button mapstaffbtn = findViewById(R.id.mapstaffbtn);
-        mapstaffbtn.setOnClickListener(new View.OnClickListener() {
+        //Buttons
+        final Button mapStaffBtn = findViewById(R.id.mapStaffBtn);
+        final Button boxStaffBtn= findViewById(R.id.boxStaffBtn);
+        final Button settingsStaffBtn=findViewById(R.id.settingsStaffBtn);
+
+        mapStaffBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Uri.Builder uriBuilder = new Uri.Builder();
@@ -92,6 +97,21 @@ public class StaffHomepage extends AppCompatActivity {
             }
         });
 
+        boxStaffBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(StaffHomepage.this,"You are in the homescreen",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        settingsStaffBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StaffHomepage.this,StaffSettings.class));
+            }
+        });
+
+
     }
 
     void GetDataFirebase(){
@@ -106,7 +126,7 @@ public class StaffHomepage extends AppCompatActivity {
             //The event listener listens to the 'OnChildEvent', which is triggered everytime a new child node is added to the RealTimeDatabase
             @Override
             public void onChildAdded(DataSnapshot snapshot,String s) {
-                MyDataSetGet data= snapshot.getValue(MyDataSetGet.class);
+                RecyclerViewItems data= snapshot.getValue(RecyclerViewItems.class);
                 listData.add(data);
                 myRecyclerView.setAdapter(adapter);
             }
@@ -138,17 +158,17 @@ public class StaffHomepage extends AppCompatActivity {
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
 
         // Define a variable 'list Array' which stores MyDataSetGet objects
-        List<MyDataSetGet> listArray;
+        List<RecyclerViewItems> listArray;
 
         // 1 arg constructor which takes in a list which stores MyDataSetGet
-        public MyAdapter (List<MyDataSetGet> List){
+        public MyAdapter (List<RecyclerViewItems> List){
             this.listArray=List;
         }
 
         // ViewHolder takes individual item from collection of raw data and populates a single row layout .
         @Override
         public MyAdapter.MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.box_status_items,parent,false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_items,parent,false);
             return new MyViewholder(view);
         }
 
@@ -156,11 +176,11 @@ public class StaffHomepage extends AppCompatActivity {
         // bind data to a specific item view(widget) in the RecyclerView at a given position.
         @Override
         public void onBindViewHolder(MyAdapter.MyViewholder holder, int position) {
-            MyDataSetGet data= listArray.get(position);
-//            holder.BoxAddress.setText(data.getAddress());
-//            holder.BoxStatusBar.setProgress(100-data.getStatus());
-//            holder.BoxPostalCode.setText(data.getBoxPostalCode());
-//            holder.BoxStatusString.setText(String.valueOf(100-(data.getStatus()))+"%");
+            RecyclerViewItems data= listArray.get(position);
+            holder.BoxAddress.setText(data.getAddress());
+            holder.BoxStatusBar.setProgress(100-data.getStatus());
+            holder.BoxPostalCode.setText(data.getBoxPostalCode());
+            holder.BoxStatusString.setText(String.valueOf(100-(data.getStatus()))+"%");
 
 
         }

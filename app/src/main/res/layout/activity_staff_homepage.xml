@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background= "@drawable/bg"
-    tools:context=".StaffMap">
+    tools:context=".StaffHomepage">
 
 
     <LinearLayout
@@ -34,7 +34,7 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/mapstaffbtn"
+            android:id="@+id/mapStaffBtn"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -45,7 +45,7 @@
             android:text="MAP" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/boxstaffbtn"
+            android:id="@+id/boxStaffBtn"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -56,7 +56,7 @@
             android:text="HOME" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/settingsstaffbtn"
+            android:id="@+id/settingsStaffBtn"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

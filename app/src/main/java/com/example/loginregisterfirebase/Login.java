@@ -58,14 +58,13 @@ public class  Login extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this, VolunteerHomepage.class));
+                startActivity(new Intent(Login.this, StaffHomepage.class));
                 finish();
-
             }
         });
 
 
-// Bad settings //
+
         //registerNowBtn
         registerNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +123,7 @@ public class  Login extends AppCompatActivity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (snapshot.exists()) {
-                                    startActivity(new Intent(Login.this, StaffHomeage.class));
+                                    startActivity(new Intent(Login.this, Del_Dan_StaffHomeage.class));
                                     finish();
                                     Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
                                     Log.d(TAG, "SignInWithEmail:staff success");

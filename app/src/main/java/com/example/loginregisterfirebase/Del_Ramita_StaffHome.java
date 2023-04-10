@@ -8,14 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Staffhome extends AppCompatActivity {
+public class Del_Ramita_StaffHome extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_staffhome);
+        setContentView(R.layout.del_staffhome);
 
-        final Button mapstaffbtn = findViewById(R.id.mapstaffbtn);
+        final Button mapstaffbtn = findViewById(R.id.mapStaffBtn);
 
         mapstaffbtn.setOnClickListener(new View.OnClickListener() {
             @Override

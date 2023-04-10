@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class StaffHomeage extends AppCompatActivity {
+public class Del_Dan_StaffHomeage extends AppCompatActivity {
 
     //RecyclerView: Contains UI
     RecyclerView myRecyclerView;
@@ -32,7 +32,7 @@ public class StaffHomeage extends AppCompatActivity {
     MyAdapter adapter;
 
     // Declare variable 'listData' of type 'List' class that stores objects of the custom data class 'MyDataSetGet'
-    List<MyDataSetGet> listData;
+    List<RecyclerViewItems> listData;
 
     FirebaseDatabase FDB;
     DatabaseReference DBR;
@@ -77,14 +77,12 @@ public class StaffHomeage extends AppCompatActivity {
         DBR= FDB.getReference("Boxes");
 
 
-
-
         DBR.addChildEventListener(new ChildEventListener() {
 
             //The event listener listens to the 'OnChildEvent', which is triggered everytime a new child node is added to the RealTimeDatabase
             @Override
             public void onChildAdded(DataSnapshot snapshot,String s) {
-                MyDataSetGet data= snapshot.getValue(MyDataSetGet.class);
+                RecyclerViewItems data= snapshot.getValue(RecyclerViewItems.class);
                 listData.add(data);
                 myRecyclerView.setAdapter(adapter);
             }
@@ -116,17 +114,17 @@ public class StaffHomeage extends AppCompatActivity {
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
 
         // Define a variable 'list Array' which stores MyDataSetGet objects
-        List<MyDataSetGet> listArray;
+        List<RecyclerViewItems> listArray;
 
         // 1 arg constructor which takes in a list which stores MyDataSetGet
-        public MyAdapter (List<MyDataSetGet> List){
+        public MyAdapter (List<RecyclerViewItems> List){
             this.listArray=List;
         }
 
         // ViewHolder takes individual item from collection of raw data and populates a single row layout .
         @Override
         public MyAdapter.MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.box_status_items,parent,false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_items,parent,false);
             return new MyViewholder(view);
         }
 
@@ -134,7 +132,7 @@ public class StaffHomeage extends AppCompatActivity {
         // bind data to a specific item view(widget) in the RecyclerView at a given position.
         @Override
         public void onBindViewHolder(MyAdapter.MyViewholder holder, int position) {
-            MyDataSetGet data= listArray.get(position);
+            RecyclerViewItems data= listArray.get(position);
             holder.BoxAddress.setText(data.getAddress());
             holder.BoxStatusBar.setProgress(100-data.getStatus());
             holder.BoxPostalCode.setText(data.getBoxPostalCode());
