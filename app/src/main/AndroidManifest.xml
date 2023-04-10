@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginRegisterFirebase"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".VolunteerReport"
@@ -34,7 +35,7 @@
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".StaffBoxStatusActivity"
+            android:name=".StaffHomeage"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

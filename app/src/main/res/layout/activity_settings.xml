@@ -21,6 +21,15 @@
         android:layout_marginBottom="32dp"/>
 
     <EditText
+        android:id="@+id/email_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter email"
+        android:inputType="textWebEmailAddress"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
         android:id="@+id/old_password_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

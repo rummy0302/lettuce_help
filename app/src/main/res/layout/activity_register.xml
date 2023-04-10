@@ -18,7 +18,7 @@
         android:fontFamily="sans-serif-condensed"
         android:textSize="18sp"
         android:layout_marginStart="20dp"
-        android:text="Volunteer Registration"/>
+        android:text="Registration"/>
 
     <EditText
         android:layout_marginTop="20dp"
@@ -27,25 +27,11 @@
         android:inputType="text"
         android:id="@+id/fullname"
         android:hint="Full Name"
-
         android:maxLines="1"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:paddingStart="20dp"
         android:paddingEnd="0dp"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:id="@+id/userid"
-        android:hint="Phone Number"
-        android:maxLines="1"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"/>
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,6 +43,23 @@
         android:layout_marginEnd="20dp"
         android:paddingStart="20dp"
         android:paddingEnd="0dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:id="@+id/ContactNumber"
+        android:hint="Contact Number"
+        android:maxLines="1"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"/>
+
+
+
+
+
 
     <EditText
         android:layout_width="match_parent"
@@ -84,15 +87,31 @@
         android:paddingEnd="0dp"/>
 
 
-    <Switch
-        android:id="@+id/staffquery"
+    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Are you a Food-bank Staff?"
+        android:maxLines="1"
+        android:orientation="horizontal"
+        android:id="@+id/Radio_Group_VS"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"/>
+        android:layout_marginEnd="20dp">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Radio_Volunteer"
+            android:text="Volunteer"
+            android:textSize="16dp"
+            android:textColor="@color/green"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Radio_Staff"
+            android:text="Staff"
+            android:textSize="16dp"
+            android:textColor="@color/green" />
+        </RadioGroup>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/registerBtn"
