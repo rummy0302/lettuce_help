@@ -97,12 +97,13 @@ public class  Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Please enter your password", Toast.LENGTH_SHORT).show();
                     password.setError("Password is required");
                     password.requestFocus();
-                } else {
-
-                    loginUser(userTxt, passwordTxt);
-
-
+                } else if (passwordTxt.length() < 8 || passwordTxt.length() > 12) {
+                    Toast.makeText(Login.this, "Password should be 8 to 12 characters long", Toast.LENGTH_SHORT).show();
+                    password.setError("8-12 character password required");
+                    password.requestFocus();
                 }
+
+                loginUser(userTxt, passwordTxt);
             }
         });
     }
@@ -114,7 +115,6 @@ public class  Login extends AppCompatActivity {
                 if (task.isSuccessful()) {
 
                     FirebaseUser user = authProfile.getCurrentUser();
-                    Log.d(TAG, "See this"+user);
 
                     if (user != null) {
 
@@ -130,7 +130,9 @@ public class  Login extends AppCompatActivity {
                                     finish();
                                     Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
                                     Log.d(TAG, "SignInWithEmail:staff success");
-                                } else {
+                                }
+
+                                else {
                                     //Check userId in DB "Volunteer"
                                     DB.child("Volunteers").child(userId).addValueEventListener(new ValueEventListener() {
                                         @Override
@@ -150,12 +152,16 @@ public class  Login extends AppCompatActivity {
                                     });
 
                                 }
+                                //The user is not found in Staff nor Volunteer
+                                //User does not exist or has incorrectly entered an Id/Password that is not found in auth
+                                //TODO: Error handling
                             }
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
 
                             }
+
 
                         });
 
@@ -167,6 +173,7 @@ public class  Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "User not found, Please register", Toast.LENGTH_SHORT).show();
                         Log.w(TAG, "signInWithEmail:failure");
                     }
+
 
                 }
             }

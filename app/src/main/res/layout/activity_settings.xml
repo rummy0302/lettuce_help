@@ -14,7 +14,7 @@
         android:id="@+id/title_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change Password"
+        android:text="Password Reset"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="16dp"
@@ -29,24 +29,7 @@
         android:padding="16dp"
         android:layout_marginBottom="16dp"/>
 
-    <EditText
-        android:id="@+id/old_password_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter old password"
-        android:inputType="textPassword"
-        android:padding="16dp"
-        android:layout_marginBottom="16dp"/>
 
-    <EditText
-        android:id="@+id/new_password_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter new password"
-        android:inputType="textPassword"
-        android:padding="16dp"
-
-        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/change_password_button"
