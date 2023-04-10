@@ -25,7 +25,7 @@ public class VolunteerHomepage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_volunteer_home);
+        setContentView(R.layout.activity_volunteer_homepage);
         final Button mapbtn = findViewById(R.id.mapbtn);
         final Button settingsbtn = findViewById(R.id.settingsbtn);
         // Find the WebView object in the layout
