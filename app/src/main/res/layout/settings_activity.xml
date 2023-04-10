@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".VolunteerHome">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="300sp"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/change_password_page"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/change_password"
+            android:layout_marginTop="20sp"
+            app:layout_constraintBottom_toTopOf="@id/edit_notifications"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            />
+        <Button
+            android:id="@+id/edit_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_notification"
+            android:layout_marginTop="20sp"
+            app:layout_constraintBottom_toTopOf="@id/report_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/change_password_page"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            />
+
+        <Button
+            android:id="@+id/report_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:gravity="center"
+            android:text="@string/report"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_notifications"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="10sp"
+            android:gravity="bottom|center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/mapbtn"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/location"
+                android:text="@string/box_location" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/homebtn"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/home"
+                android:text="@string/home" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/settingsbtn"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:drawableTop="@drawable/settings"
+                android:text="@string/settings" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/settings"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+<!--</LinearLayout>-->

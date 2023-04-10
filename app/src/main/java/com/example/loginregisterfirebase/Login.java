@@ -174,7 +174,6 @@ public class  Login extends AppCompatActivity {
                         Log.w(TAG, "signInWithEmail:failure");
                     }
 
-
                 }
             }
         });

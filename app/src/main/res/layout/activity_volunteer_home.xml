@@ -79,7 +79,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_gravity="bottom"
-            android:text="Box Location"
+            android:text="@string/box_location"
             android:background="@android:color/transparent"
             android:drawableTop="@drawable/location" />
 
@@ -91,7 +91,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_gravity="bottom"
-            android:text="HOME"
+            android:text="@string/home"
             android:background="@android:color/transparent"
             android:drawableTop="@drawable/home" />
 
@@ -102,10 +102,15 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_gravity="bottom"
-            android:text="SETTINGS"
+            android:text="@string/settings"
             android:background="@android:color/transparent"
             android:drawableTop="@drawable/settings" />
 
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
 </LinearLayout>
