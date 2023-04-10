@@ -46,23 +46,6 @@ public class  Login extends AppCompatActivity {
         final Button loginBtn = findViewById(R.id.loginBtn);
 
 
-        //Settings //
-        TextView SB = findViewById(R.id.forgotPassword);
-
-        SB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Login.this, ResetPassword.class));
-                finish();
-
-            }
-        });
-
-
-        // Bad settings //
-
-
-
 
         authProfile = FirebaseAuth.getInstance();
         DB = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/");
