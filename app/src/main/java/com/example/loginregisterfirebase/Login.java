@@ -51,6 +51,21 @@ public class  Login extends AppCompatActivity {
         DB = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/");
 
 
+
+        //VolunteerHome//
+        TextView forgotPassword = findViewById(R.id.vHome);
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this, VolunteerHome.class));
+                finish();
+
+            }
+        });
+
+
+// Bad settings //
         //registerNowBtn
         registerNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
