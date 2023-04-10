@@ -32,6 +32,8 @@ public class  Login extends AppCompatActivity {
     private FirebaseAuth authProfile;
     private DatabaseReference DB;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,25 @@ public class  Login extends AppCompatActivity {
 
         final TextView registerNowBtn = findViewById(R.id.registerNowBtn);
         final Button loginBtn = findViewById(R.id.loginBtn);
+
+
+        //Settings //
+        final Button SB = findViewById(R.id.SBTN);
+
+        SB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this, Settings.class));
+                finish();
+
+            }
+        });
+
+
+        // Bad settings //
+
+
+
 
         authProfile = FirebaseAuth.getInstance();
         DB = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/");

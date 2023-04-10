@@ -55,6 +55,17 @@
         android:text="Login"
         android:layout_marginTop="40dp"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/SBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#aed19d"
+        android:text="setting"
+        android:layout_marginTop="40dp"/>
+
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
