@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".VolunteerHome">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/mapbtn"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="bottom"
+            android:text="Login"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/location" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/homebtn"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="bottom"
+            android:text="HOME"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/home" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/settingsbtn"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="bottom"
+            android:text="SETTINGS"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/settings" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
