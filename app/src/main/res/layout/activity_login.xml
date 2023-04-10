@@ -55,17 +55,32 @@
         android:text="Login"
         android:layout_marginTop="40dp"/>
 
-    <TextView
-        android:id="@+id/SBTN"
-        android:layout_width="match_parent"
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="#aed19d"
-        android:text="setting"
-        android:layout_marginTop="40dp"/>
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Forgot Password:"/>
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="click here"
+           />
 
 
+    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

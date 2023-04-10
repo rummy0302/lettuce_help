@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".PasswordSettings"
+            android:name=".ResetPassword"
             android:exported="false" />
         <activity
             android:name=".StaffMap"

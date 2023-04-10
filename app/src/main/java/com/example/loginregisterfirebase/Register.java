@@ -156,7 +156,7 @@ public class Register extends AppCompatActivity {
                     conpassword.clearComposingText();
                 } else {
 
-                    RegisterUser(fullnameTxt, emailTxt, contactnumberTxt, passwordTxt, conpasswordTxt, selectedusertype, auth, DBR);
+                    RegisterUser(fullnameTxt, emailTxt, contactnumberTxt, passwordTxt,selectedusertype, auth, DBR);
 
                 }
 
@@ -165,7 +165,7 @@ public class Register extends AppCompatActivity {
         });
     }
 
-    private void RegisterUser(String fullname, String email, String contactnumber, String password, String conpassword, int selectedusertype, FirebaseAuth auth, DatabaseReference DBR) {
+    private void RegisterUser(String fullname, String email, String contactnumber, String password, int selectedusertype, FirebaseAuth auth, DatabaseReference DBR) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -179,7 +179,7 @@ public class Register extends AppCompatActivity {
 
 
                     //Upload data to Realtime Database
-                    User user = new User(fullname, email, contactnumber, password, conpassword, selectedusertype);
+                    User user = new User(fullname, email, contactnumber,selectedusertype);
                     String userid= firebaseUser.getUid();
                     DBR.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
