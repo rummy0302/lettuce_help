@@ -11,16 +11,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginRegisterFirebase"
-        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ResetPassword"
+            android:name=".Staffhome"
+            android:exported="false" />
+        <activity
+            android:name=".StaffHomepage"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerMaps"
+            android:exported="false" />
+        <activity
+            android:name=".Maps1"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerHomepage"
+            android:exported="false" />
+        <activity
+            android:name=".VolunteerReport"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
             android:exported="false" />
         <activity
             android:name=".StaffMap"
-            android:exported="false" />
-        <activity
-            android:name=".VolunteerHome"
             android:exported="false" />
         <activity
             android:name=".VolunteerMap"
@@ -32,10 +46,7 @@
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".StaffHomeage"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".StaffBoxStatusActivity"
             android:exported="false" />
         <activity
             android:name=".Login"
@@ -46,6 +57,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDiCgM-SEgk-SbTvf0sv1UmVLhMvUE_GoE" />
     </application>
 
 </manifest>

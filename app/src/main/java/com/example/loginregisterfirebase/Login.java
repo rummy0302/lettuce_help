@@ -58,7 +58,7 @@ public class  Login extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this, VolunteerHome.class));
+                startActivity(new Intent(Login.this, VolunteerHomepage.class));
                 finish();
 
             }
@@ -136,7 +136,7 @@ public class  Login extends AppCompatActivity {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             if (snapshot.exists()) {
-                                                startActivity(new Intent(Login.this, VolunteerHome.class));
+                                                startActivity(new Intent(Login.this, VolunteerHomepage.class));
                                                 finish();
                                                 Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
                                                 Log.d(TAG, "SignInWithEmail:Volunteer success");

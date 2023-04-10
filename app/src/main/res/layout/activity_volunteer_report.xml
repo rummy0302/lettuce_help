@@ -8,47 +8,47 @@
     android:background="@drawable/bg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".VolunteerMap">
+    tools:context=".VolunteerHome">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/mapBtn_Volunteer"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_gravity="bottom"
+            android:text="MAP"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/location"
-            android:text="MAP" />
+            android:drawableTop="@drawable/location" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/homeBtn_Volunteer"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_gravity="bottom"
+            android:text="HOME"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/home"
-            android:text="HOME" />
+            android:drawableTop="@drawable/home" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/settingsBtn_Volunteer"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_gravity="bottom"
+            android:text="SETTINGS"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/settings"
-            android:text="SETTINGS" />
+            android:drawableTop="@drawable/settings" />
 
     </LinearLayout>
 
