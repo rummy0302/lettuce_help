@@ -1,17 +1,54 @@
 <resources>
     <string name="app_name">LoginRegisterFirebase</string>
+    <string name="button_submit">Submit</string>
+
+    <string name="name_hint">Name</string>
+
+    <string name="email_hint">Email</string>
+
+<!--    bottom nav bar-->
+    <string name="login">Login</string>
+    <string name="box_location">Box Location</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+
+    <!--    button commands-->
+    <string name="phone_hint">Phone Number</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="edit_notification">Edit Notifications</string>
+    <string name="report">Report an issue</string>
+
+    <!--    general strings-->
+    <string name="report_title">Report a Problem</string>
+    <string name="issue_title">Details</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!--    for report page specific-->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+    <string name="signature_title">Your signature</string>
+
+    <!-- Preference Titles -->
+    <string name="reply_title">Default reply action</string>
+    <string name="sync_title">Sync email periodically</string>
+
+    <!-- Messages Preferences -->
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+
+    <!-- Sync Preferences -->
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string-array name="Box_Address_RV">
         <item> Yishun </item>
         <item> Novena </item>
         <item> Yew Tee </item>
     </string-array>
-
     <string-array name="Postal_Code_RV">
         <item> 809320 </item>
         <item> 748573</item>
         <item> 567483 </item>
     </string-array>
-
     <string-array name="Box_Status_RV">
         <item> 50% </item>
         <item> 75%</item>

@@ -19,7 +19,7 @@ public class VolunteerHomepage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_volunteer_home);
+        setContentView(R.layout.activity_volunteer_homepage);
 
         mapbtn = findViewById(R.id.mapBtn_Volunteer);
         settingsbtn = findViewById(R.id.settingsBtn_Volunteer);
@@ -52,7 +52,7 @@ public class VolunteerHomepage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //open Register activity
-                startActivity(new Intent(VolunteerHomepage.this,Settings.class));
+                startActivity(new Intent(VolunteerHomepage.this,VolunteerSettings.class));
             }
         });
 
