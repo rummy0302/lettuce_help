@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class StaffBoxStatusActivity extends AppCompatActivity {
+public class StaffHomeage extends AppCompatActivity {
 
     //RecyclerView: Contains UI
     RecyclerView myRecyclerView;

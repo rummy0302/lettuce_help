@@ -3,19 +3,19 @@ package com.example.loginregisterfirebase;
 public class User {
      String fullname;
      String email;
-     String PhoneNumber;
+     String ContactNumber;
      String Password;
      String ConPassword;
 
-     String StaffQuery;
+     int UserType;
 
-    public User(String fullname, String email, String PhoneNumber, String Password, String ConPassword, String StaffQuery) {
+    public User(String fullname, String email, String PhoneNumber, String Password, String ConPassword, int UserType) {
         this.fullname = fullname;
         this.email = email;
-        this.PhoneNumber = PhoneNumber;
+        this.ContactNumber = PhoneNumber;
         this.Password = Password;
         this.ConPassword = ConPassword;
-        this.StaffQuery = StaffQuery;
+        this.UserType = UserType;
     }
 
     public String getFullname() {
@@ -26,8 +26,8 @@ public class User {
         return email;
     }
 
-    public String getPhoneNumber() {
-        return PhoneNumber;
+    public String getContactNumber() {
+        return ContactNumber;
     }
 
     public String getPassword() {
