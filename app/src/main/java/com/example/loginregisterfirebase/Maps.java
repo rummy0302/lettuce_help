@@ -1,6 +1,5 @@
 package com.example.loginregisterfirebase;
 
-
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
@@ -90,11 +89,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "onComplete: found Location!");
                             Location currentLocation = (Location)task.getResult();
-<<<<<<< HEAD
                             moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),
-=======
-                            moveCamera(new LatLng(1.338628,103.959972),
->>>>>>> e184190 (Merge remote-tracking branch 'origin/main')
                                     DEFAULT_ZOOM);
                         } else {
                             Log.d(TAG, "onComplete: current location is null");
