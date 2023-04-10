@@ -119,10 +119,10 @@ public class  Login extends AppCompatActivity {
                     if (user != null) {
 
                         //Find out if user is a staff or volunteer
-                        String userId = user.getUid();
+                        String U_Id = user.getUid();
 
-                        //Check userId in DB "Staff"
-                        DB.child("Staff").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                        //Check U_Id in DB "Staff"
+                        DB.child("Staff").child(U_Id).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (snapshot.exists()) {
@@ -133,8 +133,8 @@ public class  Login extends AppCompatActivity {
                                 }
 
                                 else {
-                                    //Check userId in DB "Volunteer"
-                                    DB.child("Volunteers").child(userId).addValueEventListener(new ValueEventListener() {
+                                    //Check U_Id in DB "Volunteer"
+                                    DB.child("Volunteers").child(U_Id).addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             if (snapshot.exists()) {
@@ -152,9 +152,7 @@ public class  Login extends AppCompatActivity {
                                     });
 
                                 }
-                                //The user is not found in Staff nor Volunteer
-                                //User does not exist or has incorrectly entered an Id/Password that is not found in auth
-                                //TODO: Error handling
+
                             }
 
                             @Override
@@ -175,6 +173,15 @@ public class  Login extends AppCompatActivity {
                     }
 
 
+                }else {
+                    //The user is not found in Staff nor Volunteer
+                    //User does not exist or has incorrectly entered an Id/Password that is not found in auth
+                    userid.setError("Re-enter your email");
+                    userid.requestFocus();
+                    password.setError("Re-enter password");
+                    password.requestFocus();
+                    Toast.makeText(Login.this, "User not found. Please re-enter your email and password.", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "No Uid found in Firebase Auth");
                 }
             }
         });
