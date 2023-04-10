@@ -140,8 +140,8 @@ public class Register extends AppCompatActivity {
                     password.setError("Password is required");
                     password.requestFocus();
                 } else if (passwordTxt.length() < 8 || passwordTxt.length() > 12) {
-                    Toast.makeText(Register.this, "Please should be 8 to 12 characters long", Toast.LENGTH_SHORT).show();
-                    password.setError("Password too weak");
+                    Toast.makeText(Register.this, "Password should be 8 to 12 characters long", Toast.LENGTH_SHORT).show();
+                    password.setError("8-12 character password required");
                     password.requestFocus();
                 } else if (TextUtils.isEmpty(conpasswordTxt)) {
                     Toast.makeText(Register.this, "Please confirm your password", Toast.LENGTH_SHORT).show();
