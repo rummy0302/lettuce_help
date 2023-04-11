@@ -48,14 +48,10 @@ public class StaffHomepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Link to layout
         setContentView(R.layout.activity_staff_homepage);
 
-
-        //myRecycler from activity_staff_boxstatus
         myRecyclerView = findViewById(R.id.myRecycler);
 
-        //Recyclerview is fixed in position
         myRecyclerView.setHasFixedSize(true);
 
         //Creates an instance of a LinearLayoutManager object, which is a built-in implementation of the RecyclerView.LayoutManager interface in Android.
@@ -63,20 +59,18 @@ public class StaffHomepage extends AppCompatActivity {
         RecyclerView.LayoutManager LM= new LinearLayoutManager(getApplicationContext());
         myRecyclerView.setLayoutManager(LM);
 
-        //Instantiate new ArrayList that stores <MyDataSetGet> objects
+
         listData= new ArrayList<>();
 
         //Instantiate an adapter that takes in 'listData' parameter as the data source for the adapter
         //Adapters act as bridge between data source and a UI component. In this case, RecyclerView
         adapter=new MyAdapter(listData);
 
-        //Initialize an instance of firebase data
+        //Database implementations
         FDB =FirebaseDatabase.getInstance("https://loginregister-2f629-default-rtdb.firebaseio.com/");
-
-        //Obtain firebase data
         GetDataFirebase();
 
-        //Buttons
+        //========= NAV BAR =========//
         final Button mapStaffBtn = findViewById(R.id.mapStaffBtn);
         final Button boxStaffBtn= findViewById(R.id.boxStaffBtn);
         final Button settingsStaffBtn=findViewById(R.id.settingsStaffBtn);
@@ -87,8 +81,11 @@ public class StaffHomepage extends AppCompatActivity {
                 Uri.Builder uriBuilder = new Uri.Builder();
                 /** geo:0.0?q=ChangiAirport */
 
+                int i = 806748;
+                String s = Integer.toString(i);
+
                 uriBuilder.scheme("geo").opaquePart("0.0")
-                        .appendQueryParameter("q","ChangiAirport");
+                        .appendQueryParameter("q",s);
 
                 Uri uri = uriBuilder.build();
                 Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -190,9 +187,9 @@ public class StaffHomepage extends AppCompatActivity {
         public void onBindViewHolder(MyAdapter.MyViewholder holder, int position) {
             RecyclerViewItems data= listArray.get(position);
             holder.BoxAddress.setText(data.getAddress());
-            holder.BoxStatusBar.setProgress(100-data.getStatus());
+            holder.BoxStatusBar.setProgress(100- ((data.getStatus())/25*100) );
             holder.BoxPostalCode.setText(data.getBoxPostalCode());
-            holder.BoxStatusString.setText(String.valueOf(100-(data.getStatus()))+"%");
+            holder.BoxStatusString.setText(String.valueOf(100- ((data.getStatus())/25 *100))+"%");
 
 
         }
