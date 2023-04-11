@@ -10,6 +10,57 @@
     android:orientation="vertical"
     tools:context=".VolunteerMap">
 
+
+
+
+
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/resetPasswordpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Reset Password"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:paddingTop="70sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/emailResetPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter email"
+        android:inputType="textWebEmailAddress"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/updatePasswordBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:text="Update"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:backgroundTint="#aed19d"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/setting_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

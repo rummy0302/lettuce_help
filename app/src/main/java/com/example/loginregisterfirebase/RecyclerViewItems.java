@@ -1,15 +1,15 @@
 package com.example.loginregisterfirebase;
 
-public class MyDataSetGet {
+public class RecyclerViewItems {
 
     //Address, Postalcode and Status are keywords in the database
     String Address;
-    String Status;
+    int Status;
     String BoxPostalCode;
 
-    public MyDataSetGet(){}
+    public RecyclerViewItems(){}
 
-    public MyDataSetGet(String address, String status, String postalCode) {
+    public RecyclerViewItems(String address, int status, String postalCode) {
         Address = address;
         Status = status;
         BoxPostalCode = postalCode;
@@ -23,9 +23,10 @@ public class MyDataSetGet {
         return BoxPostalCode;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return Status;
     }
+
 
 }
 

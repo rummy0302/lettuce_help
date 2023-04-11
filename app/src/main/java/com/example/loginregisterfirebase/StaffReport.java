@@ -1,20 +1,21 @@
 package com.example.loginregisterfirebase;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class VolunteerReport extends AppCompatActivity {
+public class StaffReport extends AppCompatActivity {
     private EditText name, email, phone, details;
 
 
@@ -27,7 +28,7 @@ public class VolunteerReport extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_volunteer_report);
+        setContentView(R.layout.activity_staff_report);
 
         name = findViewById(R.id.report_name);
         email = findViewById(R.id.report_email);
@@ -44,7 +45,7 @@ public class VolunteerReport extends AppCompatActivity {
                                          public void onClick(View v) {
                                              try {
                                                  if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-                                                     startActivity(new Intent(VolunteerReport.this, Login.class));
+                                                     startActivity(new Intent(StaffReport.this, Login.class));
                                                      // finish makes the back button quit the app
 //                        finish();
                                                  }
@@ -62,22 +63,30 @@ public class VolunteerReport extends AppCompatActivity {
                                                  DBR.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(report);
 
                                              } catch (NullPointerException e) {
-                                                 Toast.makeText(VolunteerReport.this, "Please fill in all the fields!", Toast.LENGTH_SHORT).show();
+                                                 Toast.makeText(StaffReport.this, "Please fill in all the fields!", Toast.LENGTH_SHORT).show();
                                              }}
         });
 
 
+        Button mapBtn = findViewById(R.id.staffMapBtn);
+        Button homebtn=findViewById(R.id.staffHomeBtn);
+        Button settingsbtn=findViewById(R.id.staffSettingsBtn);
 
-
-        Button mapbtn = findViewById(R.id.mapBtn_Volunteer);
-        Button homebtn=findViewById(R.id.homeBtn_Volunteer);
-        Button settingsbtn=findViewById(R.id.settingsBtn_Volunteer);
-
-        mapbtn.setOnClickListener(new View.OnClickListener() {
+        mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //open Register activity
-                startActivity(new Intent(VolunteerReport.this,MapVol.class));
+                Uri.Builder uriBuilder = new Uri.Builder();
+                /** geo:0.0?q=ChangiAirport */
+
+                uriBuilder.scheme("geo").opaquePart("0.0")
+                        .appendQueryParameter("q","ChangiAirport");
+
+                Uri uri = uriBuilder.build();
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(uri);
+                if( intent.resolveActivity(getPackageManager()) != null){
+                    startActivity(intent);
+                }
             }
         });
 
@@ -85,14 +94,14 @@ public class VolunteerReport extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //open Register activity
-                startActivity(new Intent(VolunteerReport.this,VolunteerSettings.class));
+                startActivity(new Intent(StaffReport.this,StaffSettings.class));
             }
         });
 
         homebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(VolunteerReport.this,VolunteerHomepage.class));
+                startActivity(new Intent(StaffReport.this,StaffHomepage.class));
 
             }
         });

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,16 +15,13 @@
         android:theme="@style/Theme.LoginRegisterFirebase"
         tools:targetApi="31">
         <activity
-            android:name=".Staffhome"
+            android:name=".MapVol"
+            android:exported="false" />
+        <activity
+            android:name=".Del_Ramita_StaffHome"
             android:exported="false" />
         <activity
             android:name=".StaffHomepage"
-            android:exported="false" />
-        <activity
-            android:name=".Maps"
-            android:exported="false" />
-        <activity
-            android:name=".Maps1"
             android:exported="false" />
         <activity
             android:name=".VolunteerHomepage"
@@ -31,25 +30,25 @@
             android:name=".VolunteerReport"
             android:exported="false" />
         <activity
-            android:name=".Settings"
+            android:name=".Del_Ramita_Settings"
             android:exported="false" />
         <activity
-            android:name=".StaffMap"
+            android:name=".ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".VolunteerMap"
+            android:name=".VolunteerSettings"
             android:exported="false" />
         <activity
-            android:name=".NextActivity"
+            android:name=".Del_NextActivity"
             android:exported="false" />
         <activity
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".StaffBoxStatusActivity"
+            android:name=".StaffSettings"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".StaffReport"
             android:exported="false" />
         <activity
             android:name=".Login"

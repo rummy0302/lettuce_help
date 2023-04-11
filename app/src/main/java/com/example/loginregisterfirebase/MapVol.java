@@ -27,7 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-public class Maps extends FragmentActivity implements OnMapReadyCallback {
+public class MapVol extends FragmentActivity implements OnMapReadyCallback {
 
     private static GoogleMap gMap;
     private static FrameLayout map;
@@ -36,7 +36,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
     private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private Boolean mLocationPermissionsGranted = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-    private static final float DEFAULT_ZOOM = 15f;
+    private static final float DEFAULT_ZOOM = 20f;
     //VARS
 
     @Override
@@ -50,7 +50,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
 
     private void initMap() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(Maps.this);
+        mapFragment.getMapAsync(MapVol.this);
 
     }
 
@@ -89,11 +89,11 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "onComplete: found Location!");
                             Location currentLocation = (Location)task.getResult();
-                            moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),
+                            moveCamera(new LatLng(1.338628,103.959972),
                                     DEFAULT_ZOOM);
                         } else {
                             Log.d(TAG, "onComplete: current location is null");
-                            Toast.makeText(Maps.this, "unable to get current Location", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MapVol.this, "unable to get current Location", Toast.LENGTH_SHORT).show();
 
                         }
                     }
