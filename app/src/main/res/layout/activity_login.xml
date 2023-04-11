@@ -106,12 +106,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/vHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
     <!--    <Button-->
 <!--        android:id="@+id/Staff_Home_Btn"-->
 <!--        android:layout_width="match_parent"-->

@@ -52,18 +52,6 @@ public class  Login extends AppCompatActivity {
 
 
 
-        //VolunteerHome//
-        TextView forgotPassword = findViewById(R.id.vHome);
-
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Login.this, StaffHomepage.class));
-                finish();
-            }
-        });
-
-
 
         //registerNowBtn
         registerNowBtn.setOnClickListener(new View.OnClickListener() {

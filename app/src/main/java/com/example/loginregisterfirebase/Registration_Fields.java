@@ -5,13 +5,11 @@ public class Registration_Fields {
      String email;
      String ContactNumber;
 
-     int UserType;
-
-    public Registration_Fields(String fullname, String email, String PhoneNumber, int UserType) {
+    public Registration_Fields(String fullname, String email, String PhoneNumber) {
         this.fullname = fullname;
         this.email = email;
         this.ContactNumber = PhoneNumber;
-        this.UserType = UserType;
+
     }
 
     public String getFullname() {
@@ -26,7 +24,5 @@ public class Registration_Fields {
         return ContactNumber;
     }
 
-    public int getUserType() {
-        return UserType;
-    }
+
 }

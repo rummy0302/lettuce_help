@@ -181,7 +181,7 @@
                 android:layout_marginStart="20dp"
                 android:background="@android:color/transparent"
                 android:drawableTop="@drawable/location"
-                android:text="@string/box_location" />
+                android:text="Map" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/homebtn"

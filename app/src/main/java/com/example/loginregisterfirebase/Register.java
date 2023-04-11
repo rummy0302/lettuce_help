@@ -157,17 +157,21 @@ public class Register extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(Register.this, "Email Verification Sent", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Register.this, "Registration Successful. Please Login", Toast.LENGTH_LONG).show();
+
+
+
+                    FirebaseUser firebaseUser = auth.getCurrentUser();
 
 
                     // Send Verification email
-                    FirebaseUser firebaseUser = auth.getCurrentUser();
-                    firebaseUser.sendEmailVerification();
+                    // firebaseUser.sendEmailVerification();
 
 
                     //Upload data to Realtime Database
-                    Registration_Fields user = new Registration_Fields(fullname, email, contactnumber,selectedusertype);
+                    Registration_Fields user = new Registration_Fields(fullname, email, contactnumber);
                     String userid= firebaseUser.getUid();
+
                     DBR.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
