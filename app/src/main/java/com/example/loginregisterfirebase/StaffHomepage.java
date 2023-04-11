@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -118,16 +120,26 @@ public class StaffHomepage extends AppCompatActivity {
 
         DBR= FDB.getReference("Boxes");
 
-
-
-
         DBR.addChildEventListener(new ChildEventListener() {
 
             //The event listener listens to the 'OnChildEvent', which is triggered everytime a new child node is added to the RealTimeDatabase
             @Override
             public void onChildAdded(DataSnapshot snapshot,String s) {
                 RecyclerViewItems data= snapshot.getValue(RecyclerViewItems.class);
+
+
+                //add data to listData
                 listData.add(data);
+
+                //sort data
+                Collections.sort(listData, new Comparator<RecyclerViewItems>() {
+                    @Override
+                    public int compare(RecyclerViewItems o1, RecyclerViewItems o2) {
+                        return o1.getStatus().compareTo(o2.getStatus());
+                    }
+                });
+
+
                 myRecyclerView.setAdapter(adapter);
             }
 
