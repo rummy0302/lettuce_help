@@ -177,7 +177,7 @@ public class StaffHomepage extends AppCompatActivity {
         // ViewHolder takes individual item from collection of raw data and populates a single row layout .
         @Override
         public MyAdapter.MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_items,parent,false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_recyclerview_items,parent,false);
             return new MyViewholder(view);
         }
 

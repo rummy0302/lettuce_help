@@ -39,7 +39,6 @@ public class VolunteerMaps extends FragmentActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        Toast.makeText(this,"YAY the Map works", Toast.LENGTH_SHORT).show();
         this.gMap = googleMap;
 
         LatLng mapIndia = new LatLng(1.371730, 103.847641);

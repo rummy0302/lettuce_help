@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -84,6 +86,14 @@ public class Del_Dan_StaffHomeage extends AppCompatActivity {
             public void onChildAdded(DataSnapshot snapshot,String s) {
                 RecyclerViewItems data= snapshot.getValue(RecyclerViewItems.class);
                 listData.add(data);
+
+                //sort data
+                Collections.sort(listData, new Comparator<RecyclerViewItems>() {
+                    @Override
+                    public int compare(RecyclerViewItems o1, RecyclerViewItems o2) {
+                        return o1.getStatus().compareTo(o2.getStatus());
+                    }
+                });
                 myRecyclerView.setAdapter(adapter);
             }
 
@@ -124,7 +134,7 @@ public class Del_Dan_StaffHomeage extends AppCompatActivity {
         // ViewHolder takes individual item from collection of raw data and populates a single row layout .
         @Override
         public MyAdapter.MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_items,parent,false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_recyclerview_items,parent,false);
             return new MyViewholder(view);
         }
 

@@ -43,6 +43,9 @@
             android:name=".Del_NextActivity"
             android:exported="false" />
         <activity
+            android:name=".Del_Dan_StaffHomeage"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
