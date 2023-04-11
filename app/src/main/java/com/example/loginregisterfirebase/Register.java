@@ -86,10 +86,7 @@ public class Register extends AppCompatActivity {
                 final String passwordTxt = password.getText().toString();
                 final String conpasswordTxt = conpassword.getText().toString();
 
-                // VSTxt is a variable for the radio group
-                // Trying to extract the value from an unselected radio group results in a NullPointException
-                // Therefore we must verify if any button was selected first.
-                final String VSTxt;
+
 
                 //Firebase Authenticator
                 FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -181,10 +178,11 @@ public class Register extends AppCompatActivity {
                                 if (selectedusertype == R.id.Radio_Staff) {
 
                                     DBR.child("Staff").child(userid).setValue(user);
+
                                 } else {
                                     DBR.child("Volunteers").child(userid).setValue(user);
                                 }
-                                finish();
+
                             }
                         }
 
@@ -193,7 +191,6 @@ public class Register extends AppCompatActivity {
 
                         }
                     });
-
 
                     //Proceed back to login page
                     Intent intent = new Intent(Register.this, Login.class);

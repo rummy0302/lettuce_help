@@ -5,7 +5,6 @@ public class Registration_Fields {
      String email;
      String ContactNumber;
 
-
      int UserType;
 
     public Registration_Fields(String fullname, String email, String PhoneNumber, int UserType) {
@@ -15,5 +14,19 @@ public class Registration_Fields {
         this.UserType = UserType;
     }
 
-
+    public String getFullname() {
+        return fullname;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getContactNumber() {
+        return ContactNumber;
+    }
+
+    public int getUserType() {
+        return UserType;
+    }
+}
