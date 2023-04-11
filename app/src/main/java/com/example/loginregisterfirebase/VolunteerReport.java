@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,57 +17,66 @@ public class VolunteerReport extends AppCompatActivity {
     private EditText name, email, phone, details;
 
 
-    private FirebaseUser firebaseUser;
-    private FirebaseAuth firebaseAuth;
-
-    private Long longTreeSize;
-    private Button submitBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_report);
-
         name = findViewById(R.id.report_name);
         email = findViewById(R.id.report_email);
         phone = findViewById(R.id.contact_number);
         details = findViewById(R.id.details_content);
-        submitBtn = findViewById(R.id.submitBtn);
+        final Button submit_issue = findViewById(R.id.submitBtn);
+        submit_issue.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+                        startActivity(new Intent(VolunteerReport.this, Login.class));
+                    }
+                    //Obtain entered data
+                    final String nameStr = name.getText().toString();
+                    final String emailStr = email.getText().toString();
+                    final String contactNumberStr = phone.getText().toString();
+                    final String detailsStr = details.getText().toString();
 
+                    //check for empty editTexts, all must be filled
+                    if (nameStr.isEmpty()) {
+                        Toast.makeText(VolunteerReport.this, "Please enter your name!", Toast.LENGTH_SHORT).show();
+                        name.setError("Name is required");
+                        name.requestFocus(); }
 
-        DatabaseReference DBR = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/").child("Report");
+                    if (emailStr.isEmpty()) {
+                        Toast.makeText(VolunteerReport.this, "Please enter your email!", Toast.LENGTH_SHORT).show();
+                        email.setError("Email is required");
+                        email.requestFocus(); }
 
+                    if (contactNumberStr.isEmpty()) {
+                        Toast.makeText(VolunteerReport.this, "Please enter your contact number!", Toast.LENGTH_SHORT).show();
+                        phone.setError("Phone is required");
+                        phone.requestFocus(); }
 
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             try {
-                                                 if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-                                                     startActivity(new Intent(VolunteerReport.this, Login.class));
-                                                     // finish makes the back button quit the app
-//                        finish();
-                                                 }
+                    if (detailsStr.isEmpty()) {
+                        Toast.makeText(VolunteerReport.this, "Please enter your issue!", Toast.LENGTH_SHORT).show();
+                        details.setError("Issue cannot be empty");
+                        details.requestFocus(); }
 
+                    // upload data
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference databaseLink = database.getReference("Report");
+                    String key = databaseLink.push().getKey();
+                    Report_Fields report = new Report_Fields(nameStr, emailStr, contactNumberStr, detailsStr);
 
-                                                 //Obtain entered data
-                                                 final String nameStr = name.getText().toString();
-                                                 final String emailStr = email.getText().toString();
-                                                 final String contactNumberStr = phone.getText().toString();
-                                                 final String issueStr = details.getText().toString();
-
-                                                 //TODO: Fix this button
-                                                 //Send report
-                                                 Report_Fields report = new Report_Fields(nameStr, emailStr, contactNumberStr, issueStr);
-                                                 DBR.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(report);
-
-                                             } catch (NullPointerException e) {
-                                                 Toast.makeText(VolunteerReport.this, "Please fill in all the fields!", Toast.LENGTH_SHORT).show();
-                                             }}
+                    databaseLink.child(key).setValue(report);
+                    Toast.makeText(VolunteerReport.this, "Your report has been made! Our team will contact you in 3 working days.", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(VolunteerReport.this,VolunteerHomepage.class));
+                } catch (NullPointerException e) {
+                    Toast.makeText(VolunteerReport.this, "Please fill in all the fields!", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
-
-
-
+        //==================== NAV BAR  ================//
         Button mapbtn = findViewById(R.id.mapbtn);
         Button homebtn=findViewById(R.id.homebtn);
         Button settingsbtn=findViewById(R.id.settingsBtn);
@@ -76,7 +84,6 @@ public class VolunteerReport extends AppCompatActivity {
         mapbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //open Register activity
                 startActivity(new Intent(VolunteerReport.this, VolunteerMaps.class));
             }
         });
@@ -84,7 +91,6 @@ public class VolunteerReport extends AppCompatActivity {
         settingsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //open Register activity
                 startActivity(new Intent(VolunteerReport.this,VolunteerSettings.class));
             }
         });
@@ -96,33 +102,6 @@ public class VolunteerReport extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-//            private void sendIssue(String nameStr, String emailStr, String contactnumberStr, String issueStr) {
-//                String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-//
-//                DB = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/");
-//                DB.child("Report").child().addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        if (snapshot.exists()) {
-//                            startActivity(new Intent(VolunteerReport.this, StaffHomeage.class));
-//                            finish();
-//                            Toast.makeText(VolunteerReport.this, "You have successfully sent ", Toast.LENGTH_SHORT).show();
-//                            Log.d(TAG, "Send report: success");
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//
-//                });
-//            }
 
     }
 }

@@ -137,7 +137,7 @@
             app:layout_constraintBottom_toTopOf="@+id/details_content"
             />
 
-<!--    TODO: make text box-->
+
         <EditText
             android:id="@+id/details_content"
             android:layout_width="match_parent"
