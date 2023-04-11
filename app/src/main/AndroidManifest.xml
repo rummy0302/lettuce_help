@@ -34,7 +34,7 @@
             android:name=".Del_Ramita_Settings"
             android:exported="false" />
         <activity
-            android:name=".ResetPassword"
+            android:name=".VolunteerResetPassword"
             android:exported="false" />
         <activity
             android:name=".VolunteerSettings"

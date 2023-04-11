@@ -77,9 +77,9 @@ public class VolunteerReport extends AppCompatActivity {
         });
 
         //==================== NAV BAR  ================//
-        Button mapbtn = findViewById(R.id.mapbtn);
-        Button homebtn=findViewById(R.id.homebtn);
-        Button settingsbtn=findViewById(R.id.settingsBtn);
+        Button mapbtn = findViewById(R.id.mapBtn_Volunteer);
+        Button homebtn=findViewById(R.id.homeBtn_Volunteer);
+        Button settingsbtn=findViewById(R.id.settingsBtn_Volunteer);
 
         mapbtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -13,13 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <TextView
             android:id="@+id/report_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/report_title"
-            android:textAllCaps="true"
             android:textSize="30sp"
             android:textStyle="bold"
             android:paddingTop="70sp"
@@ -27,6 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/name_title"
@@ -58,6 +59,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name_title" />
+
+
+
 
         <TextView
             android:id="@+id/email_title"
@@ -137,7 +141,7 @@
             app:layout_constraintBottom_toTopOf="@+id/details_content"
             />
 
-
+        <!--    TODO: make text box-->
         <EditText
             android:id="@+id/details_content"
             android:layout_width="match_parent"
@@ -159,8 +163,11 @@
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="#aed19d"
+            android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/contact_number"
             app:layout_constraintVertical_bias="0.512" />
+
 
         <LinearLayout
             android:id="@+id/linearLayout"

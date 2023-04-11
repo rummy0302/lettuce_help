@@ -84,7 +84,7 @@ public class StaffHomepage extends AppCompatActivity {
                 String s = Integer.toString(i);
 
                 uriBuilder.scheme("geo").opaquePart("0.0")
-                        .appendQueryParameter("q",s);
+                        .appendQueryParameter("q","806748");
 
                 Uri uri = uriBuilder.build();
                 Intent intent = new Intent(Intent.ACTION_VIEW);

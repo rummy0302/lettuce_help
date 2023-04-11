@@ -9,204 +9,205 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".VolunteerReport">
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+
+
+    <TextView
+        android:id="@+id/report_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/report_title"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:paddingTop="70sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/name_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="@string/name_hint"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:paddingTop="20sp"
+        android:paddingStart="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/report_title"
+        />
 
-        <TextView
-            android:id="@+id/report_title"
-            android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/report_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="@string/name_hint"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        android:paddingEnd="0sp"
+        android:paddingStart="20sp"
+        android:layout_marginTop="5sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_title" />
+
+
+
+
+    <TextView
+        android:id="@+id/email_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/email_hint"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:paddingTop="20sp"
+        android:paddingStart="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/report_name"
+        app:layout_constraintBottom_toTopOf="@+id/report_email"
+        />
+
+    <EditText
+        android:id="@+id/report_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:paddingEnd="0sp"
+        android:paddingStart="20sp"
+        android:layout_marginTop="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_title"
+        app:layout_constraintBottom_toTopOf="@+id/phone_title"/>
+    <TextView
+        android:id="@+id/phone_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_hint"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:paddingTop="20sp"
+        android:paddingStart="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/report_email"
+        app:layout_constraintBottom_toTopOf="@+id/contact_number"
+        />
+
+    <EditText
+        android:id="@+id/contact_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/phone_hint"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:paddingEnd="0sp"
+        android:paddingStart="20sp"
+        android:layout_marginTop="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone_title"
+        app:layout_constraintBottom_toTopOf="@+id/details_title"
+        />
+
+    <TextView
+        android:id="@+id/details_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/issue_title"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:paddingTop="20sp"
+        android:paddingStart="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact_number"
+        app:layout_constraintBottom_toTopOf="@+id/details_content"
+        />
+
+    <!--    TODO: make text box-->
+    <EditText
+        android:id="@+id/details_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact_number"
+        app:layout_constraintVertical_bias="0.023"
+        android:hint="Describe the problem"
+        android:paddingStart="20sp" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_submit"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="#aed19d"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/contact_number"
+        app:layout_constraintVertical_bias="0.512" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/mapBtn_Volunteer"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/report_title"
-            android:textAllCaps="true"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:paddingTop="70sp"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="bottom"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/location"
+            android:text="MAP" />
 
-        <TextView
-            android:id="@+id/name_title"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/homeBtn_Volunteer"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/name_hint"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:gravity="left"
-            android:paddingTop="20sp"
-            android:paddingStart="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/report_title"
-            />
+            android:layout_gravity="bottom"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/home"
+            android:text="HOME" />
 
-        <EditText
-            android:id="@+id/report_name"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/settingsBtn_Volunteer"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="@string/name_hint"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:maxLines="1"
-            android:paddingEnd="0sp"
-            android:paddingStart="20sp"
-            android:layout_marginTop="5sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_title" />
+            android:layout_gravity="bottom"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/settings"
+            android:text="SETTINGS" />
 
-        <TextView
-            android:id="@+id/email_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/email_hint"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:gravity="left"
-            android:paddingTop="20sp"
-            android:paddingStart="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/report_name"
-            app:layout_constraintBottom_toTopOf="@+id/report_email"
-            />
+    </LinearLayout>
 
-        <EditText
-            android:id="@+id/report_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/email_hint"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:paddingEnd="0sp"
-            android:paddingStart="20sp"
-            android:layout_marginTop="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_title"
-            app:layout_constraintBottom_toTopOf="@+id/phone_title"/>
-        <TextView
-            android:id="@+id/phone_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/phone_hint"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:gravity="left"
-            android:paddingTop="20sp"
-            android:paddingStart="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/report_email"
-            app:layout_constraintBottom_toTopOf="@+id/contact_number"
-            />
 
-        <EditText
-            android:id="@+id/contact_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/phone_hint"
-            android:inputType="phone"
-            android:maxLines="1"
-            android:paddingEnd="0sp"
-            android:paddingStart="20sp"
-            android:layout_marginTop="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone_title"
-            app:layout_constraintBottom_toTopOf="@+id/details_title"
-            />
-
-        <TextView
-            android:id="@+id/details_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/issue_title"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:gravity="left"
-            android:paddingTop="20sp"
-            android:paddingStart="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contact_number"
-            app:layout_constraintBottom_toTopOf="@+id/details_content"
-            />
-
-<!--    TODO: make text box-->
-        <EditText
-            android:id="@+id/details_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contact_number"
-            app:layout_constraintVertical_bias="0.023"
-            android:hint="Describe the problem"
-            android:paddingStart="20sp" />
-
-        <Button
-            android:id="@+id/submitBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_submit"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contact_number"
-            app:layout_constraintVertical_bias="0.512" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-            android:layout_marginBottom="10sp"
-            android:gravity="bottom|center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/mapbtn"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/location"
-                android:text="Map" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/homebtn"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/home"
-                android:text="@string/home" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/settingsBtn"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/settings"
-                android:text="@string/settings" />
-
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

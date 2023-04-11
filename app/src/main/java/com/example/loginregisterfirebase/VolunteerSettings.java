@@ -9,11 +9,13 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class VolunteerSettings extends AppCompatActivity {
 
     private WebView webView;
 
-    private Button mapBtn,homeBtn,settingsBtn,resetPwd,reportBtn;
+    private Button mapBtn,homeBtn,settingsBtn,resetPwd,reportBtn,signoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +23,10 @@ public class VolunteerSettings extends AppCompatActivity {
         setContentView(R.layout.activity_volunteer_settings);
 
         // Defining all buttons on lower nav bar
-        mapBtn = (Button)findViewById(R.id.mapbtn);
-        homeBtn = (Button)findViewById(R.id.homebtn);
-        settingsBtn = (Button)findViewById(R.id.settingsBtn);
+        mapBtn = (Button)findViewById(R.id.mapBtn_Volunteer);
+        homeBtn = (Button)findViewById(R.id.homeBtn_Volunteer);
+        settingsBtn = (Button)findViewById(R.id.settingsBtn_Volunteer);
+        signoutBtn=(Button)findViewById(R.id.signout);
 
         // Defining all options
         resetPwd = (Button)findViewById(R.id.resetPasswordPageBtn);
@@ -44,7 +47,7 @@ public class VolunteerSettings extends AppCompatActivity {
         resetPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(VolunteerSettings.this, ResetPassword.class));
+                startActivity(new Intent(VolunteerSettings.this, VolunteerResetPassword.class));
 //                finish();
             }
         });
@@ -54,6 +57,16 @@ public class VolunteerSettings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(VolunteerSettings.this, VolunteerReport.class));
+                finish();
+            }
+        });
+
+        signoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(VolunteerSettings.this,"Signout Succesful",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(VolunteerSettings.this, Login.class));
                 finish();
             }
         });

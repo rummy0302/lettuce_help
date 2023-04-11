@@ -10,11 +10,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class StaffSettings extends AppCompatActivity {
 
     private WebView webView;
 
-    private Button mapBtn,homeBtn,settingsBtn,resetPwd,reportBtn;
+    private Button mapBtn,homeBtn,settingsBtn,resetPwd,reportBtn,signoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +24,14 @@ public class StaffSettings extends AppCompatActivity {
         setContentView(R.layout.activity_staff_settings);
 
         // Defining all buttons on lower nav bar
-        mapBtn = (Button)findViewById(R.id.staffMapBtn);
-        homeBtn = (Button)findViewById(R.id.staffHomeBtn);
-        settingsBtn = (Button)findViewById(R.id.staffSettingsBtn);
+        mapBtn = (Button)findViewById(R.id.mapBtn_Staff);
+        homeBtn = (Button)findViewById(R.id.homeBtn_Staff);
+        settingsBtn = (Button)findViewById(R.id.settingBtn_Staff);
 
         // Defining all options
         resetPwd = (Button)findViewById(R.id.resetPasswordPageBtn);
         reportBtn = (Button)findViewById(R.id.reportBtn);
+        signoutBtn=(Button)findViewById(R.id.signout);
 
         // home btn: go to homepage
         homeBtn.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +48,7 @@ public class StaffSettings extends AppCompatActivity {
         resetPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StaffSettings.this, ResetPassword.class));
+                startActivity(new Intent(StaffSettings.this, VolunteerResetPassword.class));
 //                finish();
             }
         });
@@ -55,6 +58,16 @@ public class StaffSettings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StaffSettings.this, StaffReport.class));
+                finish();
+            }
+        });
+
+        signoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(StaffSettings.this,"Signout Succesful",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(StaffSettings.this, Login.class));
                 finish();
             }
         });
@@ -73,7 +86,7 @@ public class StaffSettings extends AppCompatActivity {
                 /** geo:0.0?q=ChangiAirport */
 
                 uriBuilder.scheme("geo").opaquePart("0.0")
-                        .appendQueryParameter("q","ChangiAirport");
+                        .appendQueryParameter("q","806748");
 
                 Uri uri = uriBuilder.build();
                 Intent intent = new Intent(Intent.ACTION_VIEW);
