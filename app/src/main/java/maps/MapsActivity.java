@@ -82,7 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         try {
             if (mLocationPermissionsGranted) {
-                Task Location = mFusedLocationProviderClient.getLastLocation();
+                Task Location = new Latlng(1.338628,103.959972);
                 Location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
