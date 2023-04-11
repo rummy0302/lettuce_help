@@ -43,7 +43,6 @@ public class StaffHomepage extends AppCompatActivity {
     FirebaseDatabase FDB;
     DatabaseReference DBR;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,8 +113,8 @@ public class StaffHomepage extends AppCompatActivity {
     }
 
     void GetDataFirebase(){
-
-        DBR= FDB.getReference("Boxes");
+        DBR= FDB.getReference().child("Boxes");
+        DBR.keepSynced(true);
 
         DBR.addChildEventListener(new ChildEventListener() {
 
@@ -141,7 +140,8 @@ public class StaffHomepage extends AppCompatActivity {
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
