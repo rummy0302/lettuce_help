@@ -21,9 +21,9 @@ public class VolunteerSettings extends AppCompatActivity {
         setContentView(R.layout.activity_volunteer_settings);
 
         // Defining all buttons on lower nav bar
-        mapBtn = (Button)findViewById(R.id.mapbtn);
-        homeBtn = (Button)findViewById(R.id.homebtn);
-        settingsBtn = (Button)findViewById(R.id.settingsBtn);
+        mapBtn = (Button)findViewById(R.id.mapBtn_Volunteer);
+        homeBtn = (Button)findViewById(R.id.homeBtn_Volunteer);
+        settingsBtn = (Button)findViewById(R.id.settingsBtn_Volunteer);
 
         // Defining all options
         resetPwd = (Button)findViewById(R.id.resetPasswordPageBtn);

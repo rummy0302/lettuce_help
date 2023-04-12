@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">LoginRegisterFirebase</string>
     <string name="button_submit">Submit</string>
-
+    <string name="open">Open LoginRegisterFirebase</string>
+    <string name="close">Close LoginRegisterFirebase</string>
     <string name="name_hint">Name</string>
 
     <string name="email_hint">Email</string>

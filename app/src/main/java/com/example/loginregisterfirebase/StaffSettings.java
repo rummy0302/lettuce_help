@@ -22,9 +22,9 @@ public class StaffSettings extends AppCompatActivity {
         setContentView(R.layout.activity_staff_settings);
 
         // Defining all buttons on lower nav bar
-        mapBtn = (Button)findViewById(R.id.staffMapBtn);
-        homeBtn = (Button)findViewById(R.id.staffHomeBtn);
-        settingsBtn = (Button)findViewById(R.id.staffSettingsBtn);
+        mapBtn = (Button)findViewById(R.id.mapBtn_Volunteer);
+        homeBtn = (Button)findViewById(R.id.homeBtn_Volunteer);
+        settingsBtn = (Button)findViewById(R.id.settingsBtn_Volunteer);
 
         // Defining all options
         resetPwd = (Button)findViewById(R.id.resetPasswordPageBtn);

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group android:checkableBehavior="single">
+    <item android:id="@+id/SettingsStaff"
+        android:title="Settings"
+        />
+
+    <item android:id="@+id/ReportStaff"
+        android:title="Report"
+        />
+
+    <item android:id="@+id/SignOutStaff"
+        android:title="Sign out"
+        />
+</group>
+</menu>
