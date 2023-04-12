@@ -13,7 +13,7 @@
         android:theme="@style/Theme.LoginRegisterFirebase"
         tools:targetApi="31">
         <activity
-            android:name=".StaffHomepage"
+            android:name=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
             android:exported="false" />
         <activity
             android:name=".VolunteerMaps"
@@ -34,13 +34,16 @@
             android:name=".VolunteerSettings"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".Del_Dan_StaffHomeage"
             android:exported="false" />
         <activity
-            android:name=".StaffSettings"
+            android:name=".Registration.Register"
             android:exported="false" />
         <activity
-            android:name=".StaffReport"
+            android:name=".Staff.StaffSettings"
+            android:exported="false" />
+        <activity
+            android:name=".Staff.StaffReport"
             android:exported="false" />
         <activity
             android:name=".Login"

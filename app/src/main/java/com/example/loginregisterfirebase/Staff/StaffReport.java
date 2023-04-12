@@ -1,4 +1,4 @@
-package com.example.loginregisterfirebase;
+package com.example.loginregisterfirebase.Staff;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,8 +10,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.loginregisterfirebase.Login;
+import com.example.loginregisterfirebase.R;
+import com.example.loginregisterfirebase.Report_Fields;
+import com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView.StaffHomepage;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -70,7 +73,7 @@ public class StaffReport extends AppCompatActivity {
 
                     databaseLink.child(key).setValue(report);
                     Toast.makeText(StaffReport.this, "Your report has been made! Our team will contact you in 3 working days.", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(StaffReport.this,StaffHomepage.class));
+                    startActivity(new Intent(StaffReport.this, StaffHomepage.class));
 
 
                 } catch (NullPointerException e) {
