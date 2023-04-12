@@ -1,6 +1,9 @@
 package com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,6 +45,8 @@ public class StaffHomepage extends AppCompatActivity{
         myRecyclerView.setLayoutManager(LM);
 
         FirebaseData.GetDataFirebase(myRecyclerView);
+
+
 
     }
 

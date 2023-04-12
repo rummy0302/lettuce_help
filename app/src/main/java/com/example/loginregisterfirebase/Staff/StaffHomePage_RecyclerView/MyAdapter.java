@@ -1,8 +1,11 @@
 package com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -27,6 +30,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
         TextView BoxAddress,BoxPostalCode,BoxCapacity,BoxUnitNumber;
         ProgressBar BoxStatusBar;
 
+        Button BoxBtn;
+
         // ViewHolder takes individual item from collection of raw data and populates a single row layout .
         public MyViewholder(View itemView){
             super(itemView);
@@ -35,8 +40,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
             BoxPostalCode=itemView.findViewById(R.id.recyclerViewBoxPostalCode);
             BoxStatusBar =itemView.findViewById(R.id.recyclerViewProgressBar);
             BoxCapacity=itemView.findViewById(R.id.recyclerViewBoxStatus);
+            BoxBtn=itemView.findViewById(R.id.recylcerViewBtn);
 
-        }
+
+
+            }
 
     }
 
@@ -66,8 +74,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
         holder.BoxPostalCode.setText(data.getBoxPostalCode());
         holder.BoxStatusBar.setProgress(100-(data.getStatus()*4));
         holder.BoxCapacity.setText(100-(data.getStatus()*4)+"%");
+        holder.BoxBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri.Builder uriBuilder = new Uri.Builder();
+                /** geo:0.0?q=ChangiAirport */
+
+                String s = data.getBoxPostalCode();
+
+                uriBuilder.scheme("geo").opaquePart("0.0")
+                        .appendQueryParameter("q",s);
+
+                Uri uri = uriBuilder.build();
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(uri);
+                if( intent.resolveActivity(v.getContext().getPackageManager()) != null){
+                    v.getContext().startActivity(intent);
+                }
+
+            }
+        });
+
 
     }
+
 
 
 
