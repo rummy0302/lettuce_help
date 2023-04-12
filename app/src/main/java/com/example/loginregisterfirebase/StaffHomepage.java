@@ -187,27 +187,26 @@ public class StaffHomepage extends AppCompatActivity {
         public void onBindViewHolder(MyAdapter.MyViewholder holder, int position) {
             RecyclerViewItems data= listArray.get(position);
             holder.BoxAddress.setText(data.getAddress());
-            holder.BoxStatusBar.setProgress(100- ((data.getStatus())/25*100) );
+            holder.BoxUnitNumber.setText(data.getUnitNumber());
             holder.BoxPostalCode.setText(data.getBoxPostalCode());
-            holder.BoxStatusString.setText(String.valueOf(100- ((data.getStatus())/25 *100))+"%");
-
+            holder.BoxStatusBar.setProgress(data.getStatus() );
+            holder.BoxCapacity.setText(data.getStatus()+"%");
 
         }
 
         public class MyViewholder extends RecyclerView.ViewHolder{
 
-            TextView BoxAddress;
-            TextView BoxPostalCode;
-
-            TextView BoxStatusString;
+            TextView BoxAddress,BoxPostalCode,BoxCapacity,BoxUnitNumber;
             ProgressBar BoxStatusBar;
+
 
             public MyViewholder(View itemView){
                 super(itemView);
-                BoxAddress= itemView.findViewById(R.id.RVBoxAddress);
-                BoxPostalCode=itemView.findViewById(R.id.RVPC);
-                BoxStatusBar =itemView.findViewById(R.id.RVBoxStatus);
-                BoxStatusString =itemView.findViewById(R.id.RVStatusI);
+                BoxAddress= itemView.findViewById(R.id.recyclerViewBoxAddress);
+                BoxUnitNumber=itemView.findViewById(R.id.recyclerViewUnitNumber);
+                BoxPostalCode=itemView.findViewById(R.id.recyclerViewBoxPostalCode);
+                BoxStatusBar =itemView.findViewById(R.id.recyclerViewProgressBar);
+                BoxCapacity =itemView.findViewById(R.id.recyclerViewBoxCapacity);
 
 
             }

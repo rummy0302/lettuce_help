@@ -3,16 +3,17 @@ package com.example.loginregisterfirebase;
 public class RecyclerViewItems {
 
     //Address, Postalcode and Status are keywords in the database
-    String Address;
+    String Address,UnitNumber,BoxPostalCode;
     int Status;
-    String BoxPostalCode;
+
 
     public RecyclerViewItems(){}
 
-    public RecyclerViewItems(String address, int status, String postalCode) {
+    public RecyclerViewItems(String address, int status, String postalCode, String unitnumber) {
         Address = address;
         Status = status;
         BoxPostalCode = postalCode;
+        UnitNumber = unitnumber;
     }
 
     public String getAddress() {
@@ -27,7 +28,9 @@ public class RecyclerViewItems {
         return Status;
     }
 
-
+    public String getUnitNumber() {
+        return UnitNumber;
+    }
 }
 
 

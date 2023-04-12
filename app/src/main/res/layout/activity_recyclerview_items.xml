@@ -3,77 +3,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="175dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="409dp"
-        android:layout_height="100dp"
-        app:cardBackgroundColor="@color/green"
-        android:backgroundTint="#aed19d"
-        app:cardCornerRadius="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
+
+    <ProgressBar
+        android:id="@+id/recyclerViewProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="120dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="136dp"
+        android:progressDrawable="@drawable/custom_progress_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recyclerViewBoxCapacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="49dp"
+        android:text="___%"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerViewUnitNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recyclerViewBoxAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="183dp"
+        android:layout_marginTop="44dp"
+        android:text="Address"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recyclerViewUnitNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:text="Unit Number"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewBoxPostalCode"
+        app:layout_constraintStart_toEndOf="@+id/recyclerViewBoxCapacity"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewBoxAddress" />
+
+    <TextView
+        android:id="@+id/recyclerViewBoxPostalCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:layout_marginEnd="184dp"
+        android:layout_marginBottom="9dp"
+        android:text="xxxxxx"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/recylcerViewBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recyclerViewBoxCapacity" />
 
-        app:cardElevation="8dp"
+    <Button
+        android:id="@+id/recylcerViewBtn"
+        android:layout_width="100dp"
+        android:layout_height="50sp"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="4dp"
+        android:text="Pick up"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recyclerViewProgressBar" />
 
-        app:layout_constraintTop_toTopOf="parent" >
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <ProgressBar
-                android:id="@+id/RVBoxStatus"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp" />
-
-            <TextView
-                android:id="@+id/RVStatusI"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RVStatusI"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/RVBoxStatus"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp" />
-
-            <TextView
-                android:id="@+id/RVBoxAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RVBoxAddress"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="16dp" />
-
-            <TextView
-                android:id="@+id/RVPC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RVBoxPostalCode"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/RVBoxAddress"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
