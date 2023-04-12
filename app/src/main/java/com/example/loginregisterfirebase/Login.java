@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -44,8 +46,11 @@ public class  Login extends AppCompatActivity {
 
         final TextView registerNowBtn = findViewById(R.id.registerNowBtn);
         final Button loginBtn = findViewById(R.id.loginBtn);
-
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+//        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#aed19d"))); // Change to your desired color
+//        getSupportActionBar().setTitle("Lettuce Help");
 
         authProfile = FirebaseAuth.getInstance();
         DB = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/");

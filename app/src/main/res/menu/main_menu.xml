@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<group android:checkableBehavior="single">
-    <item android:id="@+id/SettingsStaff"
-        android:title="Settings"
-        />
 
-    <item android:id="@+id/ReportStaff"
-        android:title="Report"
-        />
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/StaffSettingsPage"
+            android:title="Settings "
+            android:icon="@drawable/baseline_settings_24" />
 
-    <item android:id="@+id/SignOutStaff"
-        android:title="Sign out"
-        />
-</group>
+
+        <item android:id="@+id/StaffLogOut"
+            android:title="Log Out"
+            android:icon="@drawable/baseline_logout_24" />
+    </group>
+
 </menu>

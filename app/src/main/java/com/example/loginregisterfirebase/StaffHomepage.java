@@ -1,8 +1,11 @@
 package com.example.loginregisterfirebase;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,7 +42,12 @@ public class StaffHomepage extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    ActionBarDrawerToggle drawerToggle;
+    Toolbar toolbar;
+    ActionBarDrawerToggle actionBarDrawerToggle;
+
+    private DrawerLayout drawerLayoutt;
+    private ActionBarDrawerToggle drawerToggle;
+
     RecyclerView myRecyclerView;
     MyAdapter adapter;
     List<RecyclerViewItems> listData;
@@ -47,9 +56,11 @@ public class StaffHomepage extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (drawerToggle.onOptionsItemSelected(item)) {
+
+        if(actionBarDrawerToggle.onOptionsItemSelected(item)){
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -58,25 +69,42 @@ public class StaffHomepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_homepage);
 
-//        drawerLayout = findViewById(R.id.drawerLayout);
-//        navigationView = findViewById(R.id.nav_view);
-//        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-//        drawerLayout.addDrawerListener(drawerToggle);
-//        drawerToggle.syncState();
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//                switch (item.getItemId()) {
-//                    case R.id.SettingsStaff: {
-//                        Toast.makeText(StaffHomepage.this, "Settings Selected", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    }
-//                }
-//                return false;
-//            }
-//        });
+
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_Open, R.string.menu_Close);
+
+        navigationView = findViewById(R.id.navigationView);
+        actionBarDrawerToggle =  new ActionBarDrawerToggle(this,drawerLayout,R.string.menu_Open,R.string.menu_Close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#aed19d"))); // Change to your desired color
+        getSupportActionBar().setTitle("Lettuce Help");
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId()){
+                    case R.id.StaffSettingsPage:
+                        startActivity(new Intent(StaffHomepage.this, StaffSettings.class));
+                        Log.i("Menu_drawer_tag","Staff Settings is clicked");
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.StaffLogOut:
+                        Log.i("Menu_drawer_tag","Staff Log out is clicked");
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+
+                }
+
+
+
+                return true;
+            }
+        });
 
         myRecyclerView = findViewById(R.id.myRecycler);
         myRecyclerView.setHasFixedSize(true);
