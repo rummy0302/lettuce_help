@@ -13,9 +13,6 @@
         android:theme="@style/Theme.LoginRegisterFirebase"
         tools:targetApi="31">
         <activity
-            android:name=".Del_Ramita_StaffHome"
-            android:exported="false" />
-        <activity
             android:name=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
             android:exported="false" />
         <activity
@@ -31,22 +28,16 @@
             android:name=".VolunteerReport"
             android:exported="false" />
         <activity
-            android:name=".Del_Ramita_Settings"
-            android:exported="false" />
-        <activity
             android:name=".VolunteerResetPassword"
             android:exported="false" />
         <activity
             android:name=".VolunteerSettings"
             android:exported="false" />
         <activity
-            android:name=".Del_NextActivity"
-            android:exported="false" />
-        <activity
             android:name=".Del_Dan_StaffHomeage"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".Registration.Register"
             android:exported="false" />
         <activity
             android:name=".Staff.StaffSettings"
