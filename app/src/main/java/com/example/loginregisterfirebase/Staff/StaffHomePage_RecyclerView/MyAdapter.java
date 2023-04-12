@@ -14,8 +14,7 @@ import com.example.loginregisterfirebase.R;
 import java.util.List;
 
 /****
- * Custom adapter class 'MyAdapter' that extends 'RecyclerView.Adapter<>'
- * RecyclerView.Adapter<> a base class required for implementing adapters for recycler view
+ * MyAdapter takes in an Arraylist from FirebaseData.class and binds the data to the ViewHolder
 ****/
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
 
@@ -46,19 +45,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
         return listArray.size();
     }
 
-
     @Override
     public MyAdapter.MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_staff_recyclerview_items,parent,false);
         return new MyViewholder(view);
     }
 
-
     /****
      *  Calculation:
      *  Height of Demo Box = 25cm
      *  Sensor, placed on the underside of box lid, detects distance from ground
-     *  If sensor distance = 0 , boxes are at full capacity
+     *  If sensor distance = 0 , it means boxes are at full capacity
      *  Formula: (100 - (distance/25 *100) ) %
     ****/
     @Override

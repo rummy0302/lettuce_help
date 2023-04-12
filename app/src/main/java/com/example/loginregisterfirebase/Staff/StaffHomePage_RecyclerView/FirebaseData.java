@@ -20,9 +20,12 @@ import java.util.Comparator;
 import java.util.List;
 
 /****
- * Event listener -On Child Event: triggered everytime a new child node is added to the RealTimeDatabase
- * Collections.sort: Uses Comparator to sort data
- */
+ * Retrieve data from firebase in the form of a datasnapshot object
+ * Convert the datasnapshot object into readable data via .getValue(RecyclerViewItems.class)
+ * Add the readable data into an Array List
+ * Sort the ArrayList by comparing each RecyclerViewItems Object against the int value "Status"
+ * Finally, set the RecyclerView adapter
+ ****/
 public class FirebaseData {
 
     FirebaseDatabase FDB;
@@ -44,7 +47,7 @@ public class FirebaseData {
             public void onChildAdded(DataSnapshot snapshot, String s) {
                 RecyclerViewItems data= snapshot.getValue(RecyclerViewItems.class);
                 listData.add(data);
-                RV.setAdapter(adapter);
+
 
                 Collections.sort(listData, new Comparator<RecyclerViewItems>() {
                     @Override
@@ -61,6 +64,7 @@ public class FirebaseData {
                         }
                     }
                 });
+                RV.setAdapter(adapter);
 
 
 
