@@ -16,7 +16,7 @@
             android:name=".Del_Ramita_StaffHome"
             android:exported="false" />
         <activity
-            android:name=".StaffHomepage"
+            android:name=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
             android:exported="false" />
         <activity
             android:name=".VolunteerMaps"
@@ -49,10 +49,10 @@
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".StaffSettings"
+            android:name=".Staff.StaffSettings"
             android:exported="false" />
         <activity
-            android:name=".StaffReport"
+            android:name=".Staff.StaffReport"
             android:exported="false" />
         <activity
             android:name=".Login"

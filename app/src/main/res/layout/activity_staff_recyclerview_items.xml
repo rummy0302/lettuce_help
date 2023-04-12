@@ -18,20 +18,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/recyclerViewBoxCapacity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="49dp"
-        android:text="___%"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/recyclerViewUnitNumber"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/recyclerViewBoxAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,25 +32,24 @@
         android:id="@+id/recyclerViewUnitNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
+        android:layout_marginStart="68dp"
         android:text="Unit Number"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewBoxPostalCode"
-        app:layout_constraintStart_toEndOf="@+id/recyclerViewBoxCapacity"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewBoxAddress" />
+        app:layout_constraintStart_toEndOf="@+id/recyclerViewBoxStatus"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewBoxAddress"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/recyclerViewBoxPostalCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
         android:layout_marginEnd="184dp"
         android:layout_marginBottom="9dp"
         android:text="xxxxxx"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/recylcerViewBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/recyclerViewBoxCapacity" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/recylcerViewBtn"
@@ -78,6 +63,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/recyclerViewProgressBar" />
+
+    <TextView
+        android:id="@+id/recyclerViewBoxStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="71dp"
+        android:text="___"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
