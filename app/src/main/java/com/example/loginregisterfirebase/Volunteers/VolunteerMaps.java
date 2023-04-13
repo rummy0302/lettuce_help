@@ -45,8 +45,7 @@ public class VolunteerMaps extends FragmentActivity implements OnMapReadyCallbac
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
     //VARS
-    FirebaseDatabase FDB;
-    DatabaseReference DBR;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,92 +64,61 @@ public class VolunteerMaps extends FragmentActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        Toast.makeText(this, "YAY the Map works", Toast.LENGTH_SHORT).show();
         this.gMap = googleMap;
-        LatLng bank1 = new LatLng(1.432534,103.845675);
-        LatLng bank2 = new LatLng(1.319177,103.913078);
-        LatLng bank3 = new LatLng(1.352738,103.943831);
-        LatLng bank4 = new LatLng(1.36576,103.967129);
+
+
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference boxesRef = databaseRef.child("Boxes");
+        boxesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                    double latitude = childSnapshot.child("Latitude").getValue(double.class);
+                    double longitude = childSnapshot.child("Longitude").getValue(double.class);
+                    Integer statusValue = childSnapshot.child("Status").getValue(Integer.class);
+                    String name = childSnapshot.child("Name").getValue(String.class);
+                    System.out.println(latitude);
+                    System.out.println(statusValue);
+                    if (statusValue != null) {
+                        double Status =( 100- ((statusValue / 25.0) * 100.0));
+                        Status=(Math.round(Status*10.0)/10.0);
+                        String alertBoxName = childSnapshot.getKey();
+                        String address = childSnapshot.child("Address").getValue(String.class);
+
+                        LatLng bank = new LatLng(latitude, longitude);
+                        Marker marker= gMap.addMarker(new MarkerOptions().position(bank).title(name));
+                        marker.setTitle(name+ "-" + Status + "%");
+                        System.out.println("+++++++++++++++++++++++++++++++++++++");
+                        if (Status <25) {
+                            marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                        }
+                        else if (Status >= 25 && Status <= 75){
+                            marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+                        } else if (Status > 75){
+                            marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                        }
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onCancelled (@NonNull DatabaseError error){
+                Log.e(TAG, "onCancelled: Failed to retrieve data from Firebase", error.toException());
+            }
+        });
+
+
+//        LatLng bank1 = new LatLng(1.432534,103.845675);
+//        LatLng bank2 = new LatLng(1.319177,103.913078);
+//        LatLng bank3 = new LatLng(1.352738,103.943831);
+//        LatLng bank4 = new LatLng(1.36576,103.967129);
 
         // Add markers to the map
-        Marker marker1 = gMap.addMarker(new MarkerOptions().position(bank1).title("Foodbank Yishun"));
-        Marker marker2 = gMap.addMarker(new MarkerOptions().position(bank2).title("Foodbank Upper Changi"));
-        Marker marker3 = gMap.addMarker(new MarkerOptions().position(bank3).title("Tampines"));
-        Marker marker4 = gMap.addMarker(new MarkerOptions().position(bank4).title("Jewel"));
+//        Marker marker1 = gMap.addMarker(new MarkerOptions().position(bank1).title("Foodbank Yishun"));
+//        Marker marker2 = gMap.addMarker(new MarkerOptions().position(bank2).title("Foodbank Upper Changi"));
+//        Marker marker3 = gMap.addMarker(new MarkerOptions().position(bank3).title("Tampines"));
+//        Marker marker4 = gMap.addMarker(new MarkerOptions().position(bank4).title("Jewel"));
 
-        // Retrieve "status" integer value from Firebase and set it as marker title
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference boxesRef = databaseRef.child("Boxes"); // Change this to the appropriate path of your "boxes" field in Firebase
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot boxSnapshot : dataSnapshot.getChildren()) {
-                    double status = (((boxSnapshot.child("Status").getValue(Integer.class))/26.0)*100.0);
-                    double thing = (Math.round(status*10.0)/10.0);
-                    String boxId = boxSnapshot.getKey();
-                    // Update marker title with "status" integer value
-                    if (boxId.equals("a")) {
-                        marker1.setTitle("Foodbank Yishun - Status: " + thing + "%");
-                        if (thing < 25){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                        }
-                        else if (status >= 25 && status <= 75){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
-
-
-                        }
-                        else if (thing >75){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                        }
-                    } else if (boxId.equals("b")) {
-                        marker2.setTitle("Foodbank Upper Changi - Status: " + thing+"%");
-                        if (thing < 25){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                        }
-                        else if (status >= 25 && status <= 75){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
-
-
-                        }
-                        else if (thing >75){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                        }
-                    } else if (boxId.equals("c")) {
-                        marker3.setTitle("Tampines - Status: " + thing+"% full");
-                        if (thing < 25){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                        }
-                        else if (status >= 25 && status <= 75){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
-
-
-                        }
-                        else if (thing >75){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                        }
-                    } else if (boxId.equals("d")) {
-                        marker4.setTitle("Jewel - Status: " + thing+"% full");
-                        if (thing < 25){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                        }
-                        else if (status >= 25 && status <= 75){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
-
-
-                        }
-                        else if (thing > 75){
-                            marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e(TAG, "onCancelled: Failed to retrieve data from Firebase", databaseError.toException());
-            }
-        };
-        boxesRef.addValueEventListener(valueEventListener);
+//        boxesRef.addValueEventListener(valueEventListener);
         if (mLocationPermissionsGranted) {
             getDeviceLocation();
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

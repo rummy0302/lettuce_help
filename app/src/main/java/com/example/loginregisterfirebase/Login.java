@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView.StaffHomepage;
 import com.example.loginregisterfirebase.Volunteers.VolunteerHomepage;
+import com.example.loginregisterfirebase.Volunteers.VolunteerMaps;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -78,7 +79,7 @@ public class  Login extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this, StaffHomepage.class));
+                startActivity(new Intent(Login.this, VolunteerMaps.class));
                 finish();
             }
         });
