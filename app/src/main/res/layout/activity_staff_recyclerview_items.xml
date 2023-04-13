@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="175dp">
+    android:background="#5774AF5C"
+    android:layout_height="175dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+  >
 
 
     <ProgressBar
@@ -17,14 +21,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <TextView
         android:id="@+id/recyclerViewBoxAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="183dp"
         android:layout_marginTop="44dp"
+        android:gravity="center"
         android:text="Address"
-        android:textSize="15sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,9 +40,10 @@
         android:id="@+id/recyclerViewUnitNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="60dp"
         android:text="Unit Number"
-        android:textSize="15sp"
+        android:gravity="center"
+        android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewBoxPostalCode"
         app:layout_constraintStart_toEndOf="@+id/recyclerViewBoxStatus"
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewBoxAddress"
@@ -44,10 +53,13 @@
         android:id="@+id/recyclerViewBoxPostalCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="184dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:text="xxxxxx"
-        android:textSize="15sp"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewUnitNumber"
         app:layout_constraintBottom_toTopOf="@+id/recylcerViewBtn"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -74,6 +86,8 @@
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

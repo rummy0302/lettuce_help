@@ -185,8 +185,8 @@ public class StaffHomepage extends AppCompatActivity{
         System.out.println(key);
         databaseRef.child(userId).child("Attending").setValue(true);
         Button BoxBtn=findViewById(R.id.recylcerViewBtn);
-        int greenclr = ContextCompat.getColor(this, R.color.green);
-        BoxBtn.setBackgroundColor(greenclr);
+//        int greenclr = ContextCompat.getColor(this, R.color.green);
+//        BoxBtn.setBackgroundColor(greenclr);
 
 
 
