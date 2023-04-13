@@ -14,11 +14,14 @@ import com.example.loginregisterfirebase.Login;
 import com.example.loginregisterfirebase.R;
 import com.example.loginregisterfirebase.Report_Fields;
 import com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView.StaffHomepage;
+import com.example.loginregisterfirebase.Validator.ContactNumberValidator;
+import com.example.loginregisterfirebase.Validator.EmailValidator;
+import com.example.loginregisterfirebase.Validator.NameValidator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class StaffReport extends AppCompatActivity {
+public class StaffReport extends AppCompatActivity implements NameValidator, EmailValidator, ContactNumberValidator {
     private EditText name, email, phone, details;
 
     @Override
@@ -122,5 +125,20 @@ public class StaffReport extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public Boolean ValidateContactNumber(EditText e) {
+        return null;
+    }
+
+    @Override
+    public Boolean ValidateEmail(EditText e) {
+        return null;
+    }
+
+    @Override
+    public Boolean ValidateName(EditText e) {
+        return null;
     }
 }

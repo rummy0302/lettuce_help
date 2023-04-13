@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.loginregisterfirebase.Login;
 import com.example.loginregisterfirebase.R;
+
 import com.example.loginregisterfirebase.Validator.ContactNumberValidator;
 import com.example.loginregisterfirebase.Validator.EmailValidator;
 import com.example.loginregisterfirebase.Validator.NameValidator;
@@ -33,6 +34,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.utilities.Validation;
 
 public class Register extends AppCompatActivity implements NameValidator,EmailValidator, PasswordValidator, UsertypeValidator, ContactNumberValidator {
 
@@ -45,7 +47,6 @@ public class Register extends AppCompatActivity implements NameValidator,EmailVa
 
         EditText fullname, email, contactnumber, password, conpassword;
         RadioGroup VolunteerOrStaffRadioGroup;
-
 
 
         // EditText
@@ -82,10 +83,9 @@ public class Register extends AppCompatActivity implements NameValidator,EmailVa
         int selectedusertype = VolunteerOrStaffRadioGroup.getCheckedRadioButtonId();
 
 
-
-
         //Register Button
         registerBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
@@ -95,14 +95,16 @@ public class Register extends AppCompatActivity implements NameValidator,EmailVa
                 //Firebase Realtime Database
                 DatabaseReference DBR = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/");
 
-                //Validation
-                if (ValidateName(fullname) && ValidateEmail(email) && ValidateContactNumber(contactnumber)&& ValidatePassword(password) && ValidatePassword(conpassword)
-                && ValidateUser(VolunteerOrStaffRadioGroup) )
-                {
-                    RegisterUser(fullname, email, contactnumber, password,selectedusertype, auth, DBR);}
+                //Validation method 1
+                if (ValidateName(fullname) && ValidateEmail(email) && ValidateContactNumber(contactnumber) && ValidatePassword(password) && ValidatePassword(conpassword)
+                        && ValidateUser(VolunteerOrStaffRadioGroup)) {
+                    RegisterUser(fullname, email, contactnumber, password, selectedusertype, auth, DBR);
                 }
-            });
-        }
+            }
+
+
+        });
+    }
 
     private void RegisterUser(EditText fullname, EditText email, EditText contactnumber, EditText password, int selectedusertype, FirebaseAuth auth, DatabaseReference DBR) {
         auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {

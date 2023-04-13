@@ -78,12 +78,12 @@ public class VolunteerSettings extends AppCompatActivity {
             }
         });
 
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(VolunteerSettings.this, VolunteerMaps.class));
-            }
-        });
+//        mapBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(VolunteerSettings.this, VolunteerMaps.class));
+//            }
+//        });
 
         //TODO:UI and maps
 

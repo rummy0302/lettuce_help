@@ -81,12 +81,12 @@ public class VolunteerReport extends AppCompatActivity {
         Button homebtn=findViewById(R.id.homeBtn_Volunteer);
         Button settingsbtn=findViewById(R.id.settingsBtn_Volunteer);
 
-        mapbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(VolunteerReport.this, VolunteerMaps.class));
-            }
-        });
+//        mapbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(VolunteerReport.this, VolunteerMaps.class));
+//            }
+//        });
 
         settingsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
