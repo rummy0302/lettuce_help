@@ -39,7 +39,6 @@ public class FirebaseData {
         listData = new ArrayList<>();
 
         adapter = new MyAdapter(listData);
-        Log.d(TAG,"Is This working?");
 
 
         DBR.addChildEventListener(new ChildEventListener() {

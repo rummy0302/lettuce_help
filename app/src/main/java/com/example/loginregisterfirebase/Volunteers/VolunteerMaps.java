@@ -47,25 +47,19 @@ public class VolunteerMaps extends FragmentActivity implements OnMapReadyCallbac
     //VARS
     FirebaseDatabase FDB;
     DatabaseReference DBR;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         getLocationPermission();
 
+
+
     }
 
     private void initMap() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        if(mapFragment!=null){mapFragment.getMapAsync(new OnMapReadyCallback() {
-                                                          @Override
-                                                          public void onMapReady(@NonNull GoogleMap googleMap) {
-
-                                                          }
-                                                      }
-                VolunteerMaps.this);}
-
+        mapFragment.getMapAsync(VolunteerMaps.this);
 
     }
 
@@ -94,7 +88,6 @@ public class VolunteerMaps extends FragmentActivity implements OnMapReadyCallbac
                     double status = (((boxSnapshot.child("Status").getValue(Integer.class))/26.0)*100.0);
                     double thing = (Math.round(status*10.0)/10.0);
                     String boxId = boxSnapshot.getKey();
-
                     // Update marker title with "status" integer value
                     if (boxId.equals("a")) {
                         marker1.setTitle("Foodbank Yishun - Status: " + thing + "%");

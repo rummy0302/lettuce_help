@@ -47,6 +47,10 @@
         <activity
             android:name=".Volunteers.VolunteerMaps"
             android:exported="false" />
+
+        <activity
+            android:name=".Volunteers.VolunteerMaps1"
+            android:exported="false" />
         <activity
             android:name=".Volunteers.VolunteerReport"
             android:exported="false" />
