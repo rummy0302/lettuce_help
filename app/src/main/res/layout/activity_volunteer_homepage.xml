@@ -24,7 +24,6 @@
         android:textSize="23sp"
         android:textStyle="bold" />
 
-
     <WebView
         android:id="@+id/foodDonationWebView"
         android:layout_width="350dp"
