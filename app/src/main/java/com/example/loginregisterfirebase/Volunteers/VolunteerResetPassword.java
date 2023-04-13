@@ -1,4 +1,4 @@
-package com.example.loginregisterfirebase;
+package com.example.loginregisterfirebase.Volunteers;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.loginregisterfirebase.Login;
+import com.example.loginregisterfirebase.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ResetPassword extends AppCompatActivity {
+public class VolunteerResetPassword extends AppCompatActivity {
 
     private EditText emailEditText;
     private Button changePasswordButton;
@@ -25,7 +27,7 @@ public class ResetPassword extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reset_password);
+        setContentView(R.layout.activity_volunteer_reset_password);
 
         emailEditText = findViewById(R.id.emailResetPassword) ;
         changePasswordButton = findViewById(R.id.updatePasswordBtn);
@@ -36,7 +38,7 @@ public class ResetPassword extends AppCompatActivity {
             public void onClick(View v) {
                 emailString = emailEditText.getText().toString();
                 if(emailString.isEmpty()){
-                    Toast.makeText(ResetPassword.this,"Please provide an email",Toast.LENGTH_LONG).show();
+                    Toast.makeText(VolunteerResetPassword.this,"Please provide an email",Toast.LENGTH_LONG).show();
                     emailEditText.setError("Password confirmation is required");
                     emailEditText.requestFocus();
                 }
@@ -50,11 +52,11 @@ public class ResetPassword extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(ResetPassword.this,"Check your email",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(ResetPassword.this, Login.class));
+                            Toast.makeText(VolunteerResetPassword.this,"Check your email",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(VolunteerResetPassword.this, Login.class));
                             finish();
                         }else{
-                            Toast.makeText(ResetPassword.this,"Error :"+ task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(VolunteerResetPassword.this,"Error :"+ task.getException().getMessage(),Toast.LENGTH_LONG).show();
 
                         }
                     }

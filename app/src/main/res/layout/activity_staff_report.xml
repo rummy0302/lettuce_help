@@ -8,7 +8,7 @@
     android:background="@drawable/bg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".VolunteerReport">
+    tools:context=".Volunteers.VolunteerReport">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -177,42 +177,7 @@
             android:layout_marginBottom="10sp"
             android:gravity="bottom|center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/staffMapBtn"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/location"
-                android:text="Map" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/staffHomeBtn"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/home"
-                android:text="@string/home" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/staffSettingsBtn"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/settings"
-                android:text="@string/settings" />
-
-        </LinearLayout>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

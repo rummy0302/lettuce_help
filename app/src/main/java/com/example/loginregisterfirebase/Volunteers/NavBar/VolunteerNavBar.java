@@ -1,7 +1,12 @@
-package com.example.loginregisterfirebase;
+package com.example.loginregisterfirebase.Volunteers.NavBar;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.loginregisterfirebase.Volunteers.NavBar.VolNavBar;
+import com.example.loginregisterfirebase.Volunteers.VolunteerHomepage;
+import com.example.loginregisterfirebase.Volunteers.VolunteerMaps;
+import com.example.loginregisterfirebase.Volunteers.VolunteerSettings;
 
 public class VolunteerNavBar extends VolNavBar {
 
@@ -11,7 +16,7 @@ public class VolunteerNavBar extends VolNavBar {
             @Override
             public void onClick(View view) {
                 // Open MapVol activity
-                volunteerHomepage.startActivity(new Intent(volunteerHomepage, MapVol.class));
+                volunteerHomepage.startActivity(new Intent(volunteerHomepage, VolunteerMaps.class));
             }
         });
     }

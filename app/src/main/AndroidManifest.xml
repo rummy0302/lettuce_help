@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -15,61 +14,56 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
+
+
+
+
         <activity
-            android:name=".NotificationAction2"
-            android:exported="false" />
-        <activity
-            android:name=".NotificationAction"
-            android:exported="false" />
-        <activity
-            android:name=".Notification"
-            android:exported="false" />
-        <activity
-            android:name=".MapVol"
-            android:exported="false" />
-        <activity
-            android:name=".Del_Ramita_StaffHome"
-            android:exported="false" />
-        <activity
-            android:name=".StaffHomepage"
-            android:exported="false"
+            android:name=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="Staff"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".VolunteerHomepage"
             android:exported="false" />
         <activity
-            android:name=".VolunteerReport"
+            android:name=".Staff.StaffReport"
+            android:label="Report"
+            android:parentActivityName=".Staff.StaffSettings"
             android:exported="false" />
         <activity
-            android:name=".NotificationActivity"
+            android:name=".Staff.StaffResetPassword"
+            android:label="Reset Password"
+            android:parentActivityName=".Staff.StaffSettings"
             android:exported="false" />
         <activity
-            android:name=".Del_Ramita_Settings"
-            android:exported="false" />
-        <activity
-            android:name=".ResetPassword"
-            android:exported="false" />
-        <activity
-            android:name=".VolunteerSettings"
-            android:exported="false" />
-        <activity
-            android:name=".Del_NextActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Register"
-            android:exported="false" />
-        <activity
-            android:name=".StaffSettings"
-            android:exported="false"
+            android:name=".Staff.StaffSettings"
             android:label="Settings"
-            android:parentActivityName=".StaffHomepage" />
-        <activity
-            android:name=".StaffReport"
+            android:parentActivityName=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
             android:exported="false" />
+
+
+        <activity
+            android:name=".Volunteers.VolunteerHomepage"
+            android:exported="false" />
+
+        <activity
+            android:name=".Volunteers.VolunteerMaps"
+            android:exported="false" />
+
+        <activity
+            android:name=".Volunteers.VolunteerMaps1"
+            android:exported="false" />
+        <activity
+            android:name=".Volunteers.VolunteerReport"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".Volunteers.VolunteerSettings"
+            android:exported="false" />
+
         <activity
             android:name=".Login"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

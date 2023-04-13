@@ -1,14 +1,14 @@
-package com.example.loginregisterfirebase;
+package com.example.loginregisterfirebase.Volunteers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.Toast;
+
+import com.example.loginregisterfirebase.R;
+import com.example.loginregisterfirebase.Volunteers.NavBar.VolunteerNavBar;
 
 public class VolunteerHomepage extends AppCompatActivity {
 
@@ -52,11 +52,6 @@ public class VolunteerHomepage extends AppCompatActivity {
         volunteerNavBar.setHomeButtonClickListener(this);
 
 
-//        mapbtn = findViewById(R.id.mapBtn_Volunteer);
-//        settingsbtn = findViewById(R.id.settingsBtn_Volunteer);
-//        homebtn =findViewById(R.id.homeBtn_Volunteer);
-
-
         // Find the WebView object in the layout
         webView = findViewById(R.id.foodDonationWebView);
         webView.setInitialScale(75);
@@ -72,29 +67,6 @@ public class VolunteerHomepage extends AppCompatActivity {
 
     }
 }
-
-//        mapbtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //open Register activity
-//                startActivity(new Intent(VolunteerHomepage.this, MapVol.class));
-//            }
-//        });
-//
-//        settingsbtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //open Register activity
-//                startActivity(new Intent(VolunteerHomepage.this,VolunteerSettings.class));
-//            }
-//        });
-//
-//        homebtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(VolunteerHomepage.this, "You are in the homepage", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
 
 

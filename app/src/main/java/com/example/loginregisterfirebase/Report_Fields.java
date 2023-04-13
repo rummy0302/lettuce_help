@@ -14,4 +14,20 @@ public class Report_Fields {
         this.contactNumber = contactNumber;
         this.details = details;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public String getDetails() {
+        return details;
+    }
 }
