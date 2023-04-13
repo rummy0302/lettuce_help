@@ -12,8 +12,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:label="@string/app_name"
         android:supportsRtl="true"
-
-      android:theme="@style/Theme.AppCompat.Light"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
 
 
@@ -21,8 +20,14 @@
             android:name=".MapVol"
             android:exported="false" />
         <activity
-            android:name=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
+            android:name=".Del_Ramita_StaffHome"
             android:exported="false" />
+        <activity
+            android:name=".StaffHomepage"
+            android:label="Staff"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".VolunteerHomepage"
             android:exported="false" />
@@ -30,26 +35,32 @@
             android:name=".VolunteerReport"
             android:exported="false" />
         <activity
-            android:name=".VolunteerResetPassword"
+            android:name=".Del_Ramita_Settings"
+            android:exported="false" />
+        <activity
+            android:name=".ResetPassword"
             android:exported="false" />
         <activity
             android:name=".VolunteerSettings"
             android:exported="false" />
         <activity
-            android:name=".Del_Dan_StaffHomeage"
+            android:name=".Del_NextActivity"
             android:exported="false" />
         <activity
-            android:name=".Registration.Register"
+            android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".Staff.StaffSettings"
+            android:name=".StaffSettings"
+            android:parentActivityName=".StaffHomepage"
+            android:label="Settings"
             android:exported="false" />
         <activity
-            android:name=".Staff.StaffReport"
+            android:name=".StaffReport"
             android:exported="false" />
         <activity
             android:name=".Login"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
