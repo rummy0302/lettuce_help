@@ -83,7 +83,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
             holder.BoxBtn.setBackgroundColor(redclr);
         }
         else {
-            holder.BoxBtn.setBackgroundColor(R.color.teal_200);
+            int blue = ContextCompat.getColor(holder.itemView.getContext(),R.color.blue);
+            holder.BoxBtn.setBackgroundColor(blue);
         }
 
         holder.BoxBtn.setOnClickListener(new View.OnClickListener() {

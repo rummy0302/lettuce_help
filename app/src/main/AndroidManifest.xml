@@ -21,11 +21,6 @@
 
 
         <activity
-            android:name=".NotificationActivity"
-            android:exported="false" />
-
-
-        <activity
             android:name=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="Staff"
@@ -46,9 +41,16 @@
             android:parentActivityName=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
             android:exported="false" />
 
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+
+
 
         <activity
-            android:name=".Volunteers.VolunteerHomepage"
+            android:name=".Volunteers.VolunteerHomePage"
+            android:label="Volunteer"
+            android:theme="@style/AppTheme.NoActionBar"
             android:exported="false" />
 
         <activity
@@ -56,15 +58,22 @@
             android:exported="false" />
 
         <activity
-            android:name=".Volunteers.VolunteerMaps1"
-            android:exported="false" />
-        <activity
             android:name=".Volunteers.VolunteerReport"
+            android:label="Report"
+            android:parentActivityName=".Volunteers.VolunteerSettings"
+            android:exported="false" />
+
+        <activity
+            android:name=".Volunteers.VolunteerResetPassword"
+            android:label="Reset Password"
+            android:parentActivityName=".Volunteers.VolunteerSettings"
             android:exported="false" />
 
 
         <activity
             android:name=".Volunteers.VolunteerSettings"
+            android:label="Settings"
+            android:parentActivityName=".Volunteers.VolunteerHomePage"
             android:exported="false" />
 
         <activity

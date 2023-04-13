@@ -92,8 +92,7 @@ public class Register extends AppCompatActivity implements NameValidator,EmailVa
                 DatabaseReference DBR = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/");
 
                 //Validation method 1
-                if (ValidateName(fullname) && ValidateEmail(email) && ValidateContactNumber(contactnumber) && ValidatePassword(password) && ValidatePassword(conpassword)
-                        && ValidateUser(VolunteerOrStaffRadioGroup)) {
+                if (ValidateName(fullname) && ValidateEmail(email) && ValidateContactNumber(contactnumber) && ValidatePassword(password) && ValidatePassword(conpassword) && ValidateUser(VolunteerOrStaffRadioGroup)) {
                     RegisterUser(fullname, email, contactnumber, password, selectedusertype, auth, DBR);
                 }
             }

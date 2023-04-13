@@ -3,6 +3,7 @@ package com.example.loginregisterfirebase.Volunteers;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -38,10 +39,9 @@ public class VolunteerSettings extends AppCompatActivity {
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(FirebaseAuth.getInstance().getCurrentUser().){
-                startActivity(new Intent(VolunteerSettings.this, VolunteerHomepage.class));
+                startActivity(new Intent(VolunteerSettings.this, VolunteerHomePage.class));
                 finish();
-//            }
+
             }
         });
 
@@ -50,11 +50,10 @@ public class VolunteerSettings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(VolunteerSettings.this, VolunteerResetPassword.class));
-//                finish();
             }
         });
 
-        // report btn: go to issue report page
+
         reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,8 +67,14 @@ public class VolunteerSettings extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(VolunteerSettings.this,"Signout Succesful",Toast.LENGTH_SHORT).show();
+                SharedPreferences sharedpreferences = getSharedPreferences(Login.SHARED_PREFS, android.content.Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.clear();
+                editor.apply();
                 startActivity(new Intent(VolunteerSettings.this, Login.class));
                 finish();
+
+
             }
         });
 
@@ -80,14 +85,12 @@ public class VolunteerSettings extends AppCompatActivity {
             }
         });
 
-//        mapBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(VolunteerSettings.this, VolunteerMaps.class));
-//            }
-//        });
-
-        //TODO:UI and maps
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(VolunteerSettings.this, VolunteerMaps.class));
+            }
+        });
 
 
     }

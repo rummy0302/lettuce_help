@@ -13,5 +13,7 @@
     <color name="colorPrimaryDark">#C2E6B1</color>
     <color name="colorAccent">#FF4081</color>
     <color name="my_title_color">#000000</color>
-    <color name="red">#D7263D</color>
+    <color name="red">#EF5B5B</color>
+    <color name="blue">#85C7F2</color>
+
 </resources>

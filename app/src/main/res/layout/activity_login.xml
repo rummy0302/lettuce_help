@@ -106,52 +106,5 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/vHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/notificationbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification" />
-
-    <!--    <Button-->
-<!--        android:id="@+id/Staff_Home_Btn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="StaffHome" />-->
-
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:gravity="center">-->
-
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id="@+id/volunteerbtn"-->
-<!--            android:layout_width="110dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            android:layout_gravity="bottom"-->
-<!--            android:backgroundTint="#aed19d"-->
-<!--            android:text="Volunteer"-->
-<!--          />-->
-
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id="@+id/staffbtn"-->
-<!--            android:layout_width="80dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            android:layout_gravity="bottom"-->
-<!--            android:backgroundTint="#aed19d"-->
-<!--            android:text="Staff"-->
-<!--             />-->
-<!--    </LinearLayout>-->
 
 </LinearLayout>

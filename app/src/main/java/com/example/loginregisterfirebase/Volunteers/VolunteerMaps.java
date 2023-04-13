@@ -87,7 +87,7 @@ public class VolunteerMaps extends FragmentActivity implements OnMapReadyCallbac
 
                         LatLng bank = new LatLng(latitude, longitude);
                         Marker marker= gMap.addMarker(new MarkerOptions().position(bank).title(name));
-                        marker.setTitle(name+ "-" + Status + "%");
+                        marker.setTitle(name+ " : " + Status + " % ");
                         System.out.println("+++++++++++++++++++++++++++++++++++++");
                         if (Status <25) {
                             marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));

@@ -35,9 +35,7 @@ public class RecyclerViewItems {
 
     public int getStatus() {return Status;}
 
-    public Boolean getAttending() {
-        return Attending;
-    }
+
 }
 
 
