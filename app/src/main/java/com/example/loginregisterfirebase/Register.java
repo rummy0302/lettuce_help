@@ -1,4 +1,4 @@
-package com.example.loginregisterfirebase.Registration;
+package com.example.loginregisterfirebase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +14,6 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.loginregisterfirebase.Login;
-import com.example.loginregisterfirebase.R;
 
 import com.example.loginregisterfirebase.Validator.ContactNumberValidator;
 import com.example.loginregisterfirebase.Validator.EmailValidator;
@@ -34,7 +31,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.core.utilities.Validation;
 
 public class Register extends AppCompatActivity implements NameValidator,EmailValidator, PasswordValidator, UsertypeValidator, ContactNumberValidator {
 

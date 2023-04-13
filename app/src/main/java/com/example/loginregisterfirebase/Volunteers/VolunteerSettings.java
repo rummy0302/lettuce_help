@@ -1,4 +1,4 @@
-package com.example.loginregisterfirebase;
+package com.example.loginregisterfirebase.Volunteers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.loginregisterfirebase.Login;
+import com.example.loginregisterfirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class VolunteerSettings extends AppCompatActivity {

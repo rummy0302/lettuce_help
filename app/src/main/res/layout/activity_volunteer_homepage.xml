@@ -8,7 +8,7 @@
     android:background="@drawable/bg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".VolunteerHomepage">
+    tools:context=".Volunteers.VolunteerHomepage">
 
     <TextView
         android:id="@+id/fooddonation"

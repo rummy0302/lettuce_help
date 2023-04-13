@@ -1,4 +1,4 @@
-package com.example.loginregisterfirebase;
+package com.example.loginregisterfirebase.Volunteers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.loginregisterfirebase.Login;
+import com.example.loginregisterfirebase.R;
+import com.example.loginregisterfirebase.Report_Fields;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

@@ -1,7 +1,6 @@
 package com.example.loginregisterfirebase.Staff;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -14,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.loginregisterfirebase.Login;
 import com.example.loginregisterfirebase.R;
-import com.example.loginregisterfirebase.Registration.Register;
-import com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView.StaffHomepage;
 import com.example.loginregisterfirebase.Validator.EmailValidator;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

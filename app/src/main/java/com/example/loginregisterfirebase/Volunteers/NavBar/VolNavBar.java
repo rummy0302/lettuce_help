@@ -1,7 +1,6 @@
-package com.example.loginregisterfirebase;
+package com.example.loginregisterfirebase.Volunteers.NavBar;
 
-import android.content.Intent;
-import android.view.View;
+import com.example.loginregisterfirebase.Volunteers.VolunteerHomepage;
 
 public abstract class VolNavBar {
 

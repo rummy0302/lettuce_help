@@ -1,7 +1,6 @@
 package com.example.loginregisterfirebase.Staff;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -12,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.loginregisterfirebase.Login;
 import com.example.loginregisterfirebase.R;
-import com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView.StaffHomepage;
-import com.example.loginregisterfirebase.VolunteerResetPassword;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class StaffSettings extends AppCompatActivity {

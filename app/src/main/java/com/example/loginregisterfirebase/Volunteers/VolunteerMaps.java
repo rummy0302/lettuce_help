@@ -1,9 +1,8 @@
-package com.example.loginregisterfirebase;
+package com.example.loginregisterfirebase.Volunteers;
 
 import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -16,6 +15,7 @@ import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.loginregisterfirebase.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -34,7 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Maps extends FragmentActivity implements OnMapReadyCallback {
+public class VolunteerMaps extends FragmentActivity implements OnMapReadyCallback {
 
     private static GoogleMap gMap;
     private static FrameLayout map;
@@ -47,19 +47,25 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
     //VARS
     FirebaseDatabase FDB;
     DatabaseReference DBR;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         getLocationPermission();
 
-
-
     }
 
     private void initMap() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(Maps.this);
+        if(mapFragment!=null){mapFragment.getMapAsync(new OnMapReadyCallback() {
+                                                          @Override
+                                                          public void onMapReady(@NonNull GoogleMap googleMap) {
+
+                                                          }
+                                                      }
+                VolunteerMaps.this);}
+
 
     }
 
@@ -88,6 +94,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                     double status = (((boxSnapshot.child("Status").getValue(Integer.class))/26.0)*100.0);
                     double thing = (Math.round(status*10.0)/10.0);
                     String boxId = boxSnapshot.getKey();
+
                     // Update marker title with "status" integer value
                     if (boxId.equals("a")) {
                         marker1.setTitle("Foodbank Yishun - Status: " + thing + "%");
@@ -190,7 +197,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
 
                         } else {
                             Log.d(TAG, "onComplete: current location is null");
-                            Toast.makeText(Maps.this, "unable to get current Location", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VolunteerMaps.this, "unable to get current Location", Toast.LENGTH_SHORT).show();
 
                         }
                     }
