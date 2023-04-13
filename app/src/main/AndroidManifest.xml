@@ -19,44 +19,41 @@
         <activity
             android:name=".MapVol"
             android:exported="false" />
+
+
         <activity
-            android:name=".Del_Ramita_StaffHome"
+            android:name=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Staff"
             android:exported="false" />
         <activity
-            android:name=".StaffHomepage"
-            android:label="Staff"
-            android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:name=".Staff.StaffReport"
+            android:label="Report"
+            android:parentActivityName=".Staff.StaffSettings"
+            android:exported="false" />
+        <activity
+            android:name=".Staff.StaffResetPassword"
+            android:label="Reset Password"
+            android:parentActivityName=".Staff.StaffSettings"
+            android:exported="false" />
+        <activity
+            android:name=".Staff.StaffSettings"
+            android:label="Settings"
+            android:parentActivityName=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
+            android:exported="false" />
+
         <activity
             android:name=".VolunteerHomepage"
             android:exported="false" />
         <activity
             android:name=".VolunteerReport"
             android:exported="false" />
-        <activity
-            android:name=".Del_Ramita_Settings"
-            android:exported="false" />
-        <activity
-            android:name=".ResetPassword"
-            android:exported="false" />
+
+
         <activity
             android:name=".VolunteerSettings"
             android:exported="false" />
-        <activity
-            android:name=".Del_NextActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Register"
-            android:exported="false" />
-        <activity
-            android:name=".StaffSettings"
-            android:parentActivityName=".StaffHomepage"
-            android:label="Settings"
-            android:exported="false" />
-        <activity
-            android:name=".StaffReport"
-            android:exported="false" />
+
         <activity
             android:name=".Login"
             android:exported="true">

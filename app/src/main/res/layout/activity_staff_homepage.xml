@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
         android:orientation="vertical"
         android:background= "@drawable/bg"
-    tools:context=".StaffHomepage">
+    tools:context=".Staff.StaffHomePage_RecyclerView.StaffHomepage">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -42,47 +42,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="733dp"
+        android:layout_height="621dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+
         app:layout_anchor="@+id/linearLayout2"
-        app:layout_anchorGravity="center">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/mapStaffBtn"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/location"
-            android:text="MAP" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/boxStaffBtn"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/box"
-            android:text="HOME" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/settingsStaffBtn"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/settings"
-            android:text="SETTINGS" />
-
-    </LinearLayout>
+        app:layout_anchorGravity="center" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
