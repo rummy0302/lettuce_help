@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -14,8 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
-
-
+        <activity
+            android:name=".NotificationAction2"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationAction"
+            android:exported="false" />
+        <activity
+            android:name=".Notification"
+            android:exported="false" />
         <activity
             android:name=".MapVol"
             android:exported="false" />
@@ -24,15 +32,17 @@
             android:exported="false" />
         <activity
             android:name=".StaffHomepage"
-            android:label="Staff"
             android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:label="Staff"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VolunteerHomepage"
             android:exported="false" />
         <activity
             android:name=".VolunteerReport"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationActivity"
             android:exported="false" />
         <activity
             android:name=".Del_Ramita_Settings"
@@ -51,16 +61,15 @@
             android:exported="false" />
         <activity
             android:name=".StaffSettings"
-            android:parentActivityName=".StaffHomepage"
+            android:exported="false"
             android:label="Settings"
-            android:exported="false" />
+            android:parentActivityName=".StaffHomepage" />
         <activity
             android:name=".StaffReport"
             android:exported="false" />
         <activity
             android:name=".Login"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

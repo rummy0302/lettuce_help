@@ -28,6 +28,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import notifications.Notification;
+
 public class  Login extends AppCompatActivity {
 
     private EditText userid, password;
@@ -46,6 +48,8 @@ public class  Login extends AppCompatActivity {
 
         final TextView registerNowBtn = findViewById(R.id.registerNowBtn);
         final Button loginBtn = findViewById(R.id.loginBtn);
+        final Button notificationbutton = findViewById(R.id.notificationbutton);
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -55,6 +59,15 @@ public class  Login extends AppCompatActivity {
         authProfile = FirebaseAuth.getInstance();
         DB = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/");
 
+
+
+
+        notificationbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this, NotificationActivity.class));
+            }
+        });
 
 
         //VolunteerHome//

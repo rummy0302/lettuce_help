@@ -112,6 +112,12 @@
         android:layout_height="wrap_content"
         android:text="Button" />
 
+    <Button
+        android:id="@+id/notificationbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notification" />
+
     <!--    <Button-->
 <!--        android:id="@+id/Staff_Home_Btn"-->
 <!--        android:layout_width="match_parent"-->
