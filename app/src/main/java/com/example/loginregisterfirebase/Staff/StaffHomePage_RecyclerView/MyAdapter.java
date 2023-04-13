@@ -2,6 +2,7 @@ package com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.loginregisterfirebase.R;
@@ -45,10 +47,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
             BoxStatusBar =itemView.findViewById(R.id.recyclerViewProgressBar);
             BoxCapacity=itemView.findViewById(R.id.recyclerViewBoxStatus);
             BoxBtn=itemView.findViewById(R.id.recylcerViewBtn);
-
-
-
-            }
+        }
 
     }
 
@@ -78,6 +77,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
         holder.BoxPostalCode.setText(data.getBoxPostalCode());
         holder.BoxStatusBar.setProgress(100-(data.getStatus()*4));
         holder.BoxCapacity.setText(100-(data.getStatus()*4)+"%");
+
+        if( (100-(data.getStatus()*4)) >75 ){
+            int redclr = ContextCompat.getColor( holder.itemView.getContext(), R.color.red);
+            holder.BoxBtn.setBackgroundColor(redclr);
+        }
+        else {
+            holder.BoxBtn.setBackgroundColor(R.color.teal_200);
+        }
+
         holder.BoxBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
