@@ -1,6 +1,7 @@
 package com.example.loginregisterfirebase;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.loginregisterfirebase.R;
+import com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView.StaffHomepage;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -53,7 +55,7 @@ public class NotificationActivity extends AppCompatActivity {
         PendingIntent mainPIntent = PendingIntent.getActivity(this,0,mainIntent,PendingIntent.FLAG_ONE_SHOT);
 
         //click like button to start likeactivity
-        Intent likeIntent = new Intent(this,StaffHomepage.class);
+        Intent likeIntent = new Intent(this, StaffHomepage.class);
         likeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent likePIntent = PendingIntent.getActivity(this,0,likeIntent,PendingIntent.FLAG_ONE_SHOT);
 
@@ -72,11 +74,11 @@ public class NotificationActivity extends AppCompatActivity {
         //icon
         builder.setSmallIcon(R.drawable.ic_notification);
 
-        //title
-        builder.setContentTitle("Title of Notification");
-
-        //description
-        builder.setContentText("This is the description of notification");
+//        //title
+//        builder.setContentTitle("Title of Notification");
+//
+//        //description
+//        builder.setContentText("This is the description of notification");
 
         //set priority
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
@@ -130,3 +132,9 @@ public class NotificationActivity extends AppCompatActivity {
         }
     }
 }
+
+
+
+
+
+
