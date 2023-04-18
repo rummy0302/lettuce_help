@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.loginregisterfirebase.Login;
 import com.example.loginregisterfirebase.R;
+import com.example.loginregisterfirebase.Register;
+import com.example.loginregisterfirebase.Staff.StaffSettings;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class VolunteerSettings extends AppCompatActivity {
@@ -73,8 +75,6 @@ public class VolunteerSettings extends AppCompatActivity {
                 editor.apply();
                 startActivity(new Intent(VolunteerSettings.this, Login.class));
                 finish();
-
-
             }
         });
 

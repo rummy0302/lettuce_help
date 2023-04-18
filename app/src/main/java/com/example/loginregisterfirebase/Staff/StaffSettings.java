@@ -1,7 +1,9 @@
 package com.example.loginregisterfirebase.Staff;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.loginregisterfirebase.Login;
 import com.example.loginregisterfirebase.R;
+import com.example.loginregisterfirebase.Register;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class StaffSettings extends AppCompatActivity {
@@ -53,8 +56,13 @@ public class StaffSettings extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(StaffSettings.this,"Signout Succesful",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(StaffSettings.this, Login.class));
+                SharedPreferences sharedpreferences = getSharedPreferences(Login.SHARED_PREFS, android.content.Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.clear();
+                editor.apply();
                 finish();
+                startActivity(new Intent(StaffSettings.this, Login.class));
+
             }
         });
     }
