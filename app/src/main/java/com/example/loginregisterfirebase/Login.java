@@ -70,6 +70,7 @@ public class  Login extends AppCompatActivity implements EmailValidator, Passwor
                 startActivity(new Intent(Login.this, StaffResetPassword.class));
             }
         });
+
         //registerNowBtn
         registerNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,26 +132,22 @@ public class  Login extends AppCompatActivity implements EmailValidator, Passwor
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             if (snapshot.exists()) {
-                                                // Setting the credentials data in the shared preferences
                                                 if (s1.isEmpty() && a.isEmpty()) {
                                                     SharedPreferences.Editor editor = sharedpreferences.edit();
                                                     editor.putString(EMAIL_KEY, userTxt);
                                                     editor.putString(PASSWORD_KEY, passwordTxt);
                                                     editor.apply();
-                                                }
+                                                // Setting the credentials data in the shared preferences
                                                 startActivity(new Intent(Login.this, VolunteerHomePage.class));
                                                 finish();
                                                 Toast.makeText(Login.this, "You are logged in", Toast.LENGTH_SHORT).show();
                                                 Log.d(TAG, "SignInWithEmail:Volunteer success");
                                             }
-                                        }
-
+                                        }}
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) {
-
                                         }
                                     });
-
                                 }
 
                             }
@@ -191,12 +188,12 @@ public class  Login extends AppCompatActivity implements EmailValidator, Passwor
     @Override
     protected void onResume() {
         super.onResume();
-        // Fetching the stored data from the SharedPreference
+//         Fetching the stored data from the SharedPreference
         SharedPreferences sh = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         String s1 = sh.getString(EMAIL_KEY, "");
         String a = sh.getString(PASSWORD_KEY, "");
 
-        // Setting the fetched data in the EditTexts
+//         Setting the fetched data in the EditTexts
         if (!(s1.isEmpty() && a.isEmpty())) {
             loginUser(s1, a);
         }
