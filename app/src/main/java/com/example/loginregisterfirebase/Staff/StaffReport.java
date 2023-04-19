@@ -58,9 +58,6 @@ public class StaffReport extends AppCompatActivity implements NameValidator, Ema
                     startActivity(new Intent(StaffReport.this, StaffHomepage.class));
                 }
             }
-
-            ;
-
         });
     }
     @Override

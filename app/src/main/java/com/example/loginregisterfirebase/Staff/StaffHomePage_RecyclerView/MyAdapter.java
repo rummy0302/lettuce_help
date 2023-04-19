@@ -78,10 +78,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
         holder.BoxStatusBar.setProgress(100-(data.getStatus()*4));
         holder.BoxCapacity.setText(100-(data.getStatus()*4)+"%");
 
-        if( (100-(data.getStatus()*4)) >75 ){
+        if( ((100-(data.getStatus()*4)) >75 ) && data.getAttending() == false){
             int redclr = ContextCompat.getColor( holder.itemView.getContext(), R.color.red);
             holder.BoxBtn.setBackgroundColor(redclr);
         }
+
         else {
             int blue = ContextCompat.getColor(holder.itemView.getContext(),R.color.blue);
             holder.BoxBtn.setBackgroundColor(blue);
@@ -90,6 +91,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
         holder.BoxBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Uri.Builder uriBuilder = new Uri.Builder();
                 /** geo:0.0?q=ChangiAirport */
 
@@ -104,6 +106,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
                 if( intent.resolveActivity(v.getContext().getPackageManager()) != null){
                     v.getContext().startActivity(intent);
                 }
+
+
 
             }
         });

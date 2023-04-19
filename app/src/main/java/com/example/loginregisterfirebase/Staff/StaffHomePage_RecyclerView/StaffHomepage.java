@@ -1,22 +1,41 @@
 package com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.loginregisterfirebase.Login;
+import com.example.loginregisterfirebase.NotificationAction2;
+import com.example.loginregisterfirebase.NotificationActivity;
 import com.example.loginregisterfirebase.R;
 import com.example.loginregisterfirebase.Staff.StaffSettings;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -55,7 +74,126 @@ public class StaffHomepage extends AppCompatActivity{
         myRecyclerView.setLayoutManager(LM);
 
         FirebaseData.GetDataFirebase(myRecyclerView);
+
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference boxesRef = databaseRef.child("Boxes"); // Change this to the appropriate path of your "boxes" field in Firebase
+
+        boxesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                    Integer statusValue = childSnapshot.child("Status").getValue(Integer.class);
+                    Boolean attendingStatus=childSnapshot.child("Attending").getValue(Boolean.class);
+
+                    if (statusValue != null ) {
+                        double Status = (statusValue / 25.0) * 100.0;
+
+
+                        if (Status >75.0 && attendingStatus ==false){
+
+                            String alertBoxName = childSnapshot.getKey();
+                            String address = childSnapshot.child("Name").getValue(String.class);
+                            Toast.makeText(StaffHomepage.this,address+"Box needs to be collected",Toast.LENGTH_LONG).show();
+                            showNotification( address, Status, alertBoxName);
+
+                        } else {
+                            // Handle case where Address is null
+                            // Log an error or perform other appropriate actions
+                            Log.e("StaffHomepage", "Address is null for childSnapshot: " + childSnapshot.getKey());
+                        }
+                    } else {
+                        // Handle case where statusValue is null
+                        // Log an error or perform other appropriate actions
+                        Log.e("StaffHomepage", "StatusValue is null for childSnapshot: " + childSnapshot.getKey());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle onCancelled event
+            }
+        });
     }
+
+    private void showNotification(String title, Double status, String alertbox) {
+
+        createNotificationChannel();
+
+        //start this Activity on by tapping notification
+        Intent mainIntent = new Intent(this, NotificationActivity.class);
+        mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent mainPIntent = PendingIntent.getActivity(this,0,mainIntent,PendingIntent.FLAG_ONE_SHOT);
+
+        //click like button to start likeactivity
+        Intent likeIntent = new Intent(this, StaffHomepage.class);
+        likeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        PendingIntent likePIntent = PendingIntent.getActivity(this,0,likeIntent,PendingIntent.FLAG_ONE_SHOT);
+
+        //click dislike button to start dislikeactivity
+        Intent disIntent = new Intent(this, NotificationAction2.class);
+        disIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent dislikePIntent = PendingIntent.getActivity(this,0,disIntent,PendingIntent.FLAG_ONE_SHOT);
+
+
+        // creating notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+
+        //icon
+        builder.setSmallIcon(R.drawable.ic_notification);
+
+        //title
+        builder.setContentTitle(title);
+
+        //description
+        builder.setContentText("Box is getting full. Please come and collect it!");
+
+        //set priority
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        //dismiss on tap
+        builder.setAutoCancel(true);
+
+        //start intent on notification tap (Notification Activity)
+        builder.setContentIntent(mainPIntent);
+
+        //add action buttons to notification
+        builder.addAction(R.drawable.ic_like,"Accept",likePIntent);
+        builder.addAction(R.drawable.ic_dislike,"Decline",dislikePIntent);
+
+
+
+        //notification manager
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        notificationManagerCompat.notify(NOTIFICATION_ID, builder.build());
+    }
+
+    private void createNotificationChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name  = "My Notification";
+            String description = "My Notification description";
+
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name,importance);
+            notificationChannel.setDescription(description);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+
+        }
+    }
+
 
 
     @Override
@@ -68,7 +206,6 @@ public class StaffHomepage extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
 
         if( id == R.id.StaffSettingsPage){
             Intent intent = new Intent( StaffHomepage.this, StaffSettings.class);
@@ -88,5 +225,8 @@ public class StaffHomepage extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 
 }
