@@ -110,9 +110,13 @@ public class StaffHomepage extends AppCompatActivity{
                         if (Status >70.0 && attendingStatus ==false){
 
                             String alertBoxName = childSnapshot.getKey();
-                            String address = childSnapshot.child("Address").getValue(String.class);
-                            Toast.makeText(StaffHomepage.this,"abn"+alertBoxName+"add"+address+"Box needs to be collected",Toast.LENGTH_LONG).show();
+                            String address = childSnapshot.child("Name").getValue(String.class);
+                            System.out.println(alertBoxName);
+                            System.out.println(address);
+                            Toast.makeText(StaffHomepage.this,address+"Box needs to be collected",Toast.LENGTH_LONG).show();
                             showNotification( address, Status, alertBoxName);
+
+
 
 
 //                        if (childSnapshot.hasChild("Address") && childSnapshot.child("Address").getValue() != null) {
@@ -129,8 +133,8 @@ public class StaffHomepage extends AppCompatActivity{
                             Log.e("StaffHomepage", "Address is null for childSnapshot: " + childSnapshot.getKey());
                         }
 
-                        System.out.println(statusValue);
-                        System.out.println(Status);
+//                        System.out.println(statusValue);
+//                        System.out.println(Status);
                     } else {
                         // Handle case where statusValue is null
                         // Log an error or perform other appropriate actions
@@ -177,14 +181,14 @@ public class StaffHomepage extends AppCompatActivity{
 
 
 
-        String userId = alertbox; // Replace with the appropriate user ID
+//        String userId = alertbox; // Replace with the appropriate user ID
 //        String itemId = status+""; // Replace with the appropriate item ID
-        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Boxes");
-        String key = databaseRef.child(userId).getKey();
+//        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Boxes");
+//        String key = databaseRef.child(userId).getKey();
 //        databaseRef.child(userId).child(key).setValue(itemId);
-        System.out.println(key);
-        databaseRef.child(userId).child("Attending").setValue(true);
-        Button BoxBtn=findViewById(R.id.recylcerViewBtn);
+//        System.out.println(key);
+//        databaseRef.child(userId).child("Attending").setValue(true);
+//        Button BoxBtn=findViewById(R.id.recylcerViewBtn);
 //        int greenclr = ContextCompat.getColor(this, R.color.green);
 //        BoxBtn.setBackgroundColor(greenclr);
 
