@@ -145,16 +145,12 @@ public class StaffHomepage extends AppCompatActivity{
 
         //title
         builder.setContentTitle(title);
-
         //description
         builder.setContentText("Box is getting full. Please come and collect it!");
-
         //set priority
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
         //dismiss on tap
         builder.setAutoCancel(true);
-
         //start intent on notification tap (Notification Activity)
         builder.setContentIntent(mainPIntent);
 
@@ -163,6 +159,10 @@ public class StaffHomepage extends AppCompatActivity{
         builder.addAction(R.drawable.ic_dislike,"Decline",dislikePIntent);
 
 
+        String userId = alertbox;
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Boxes");
+//        String key = databaseRef.child(userId).getKey(); Commenting this out cuz alertbox is already the unique key
+        databaseRef.child(userId).child("Attending").setValue(true);
 
         //notification manager
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
