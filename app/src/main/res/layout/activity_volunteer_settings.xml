@@ -8,8 +8,7 @@
     android:background="@drawable/bg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".VolunteerSettings">
-
+    tools:context=".Volunteers.VolunteerSettings">
 
 
     <TextView

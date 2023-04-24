@@ -26,7 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
         android:id="@+id/resetPasswordPageBtn"
         android:layout_width="match_parent"
@@ -81,42 +80,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/mapBtn_Staff"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/location"
-            android:text="MAP" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/homeBtn_Staff"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/home"
-            android:text="HOME" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/settingBtn_Staff"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@android:color/transparent"
-            android:drawableTop="@drawable/settings"
-            android:text="SETTINGS" />
-
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
 
 

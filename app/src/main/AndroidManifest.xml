@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -10,44 +13,70 @@
         android:fullBackupContent="@xml/backup_rules"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LoginRegisterFirebase"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
+
+
         <activity
             android:name=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
-            android:exported="false" />
-        <activity
-            android:name=".VolunteerMaps"
-            android:exported="false" />
-        <activity
-            android:name=".Maps1"
-            android:exported="false" />
-        <activity
-            android:name=".VolunteerHomepage"
-            android:exported="false" />
-        <activity
-            android:name=".VolunteerReport"
-            android:exported="false" />
-        <activity
-            android:name=".VolunteerResetPassword"
-            android:exported="false" />
-        <activity
-            android:name=".VolunteerSettings"
-            android:exported="false" />
-        <activity
-            android:name=".Del_Dan_StaffHomeage"
-            android:exported="false" />
-        <activity
-            android:name=".Registration.Register"
-            android:exported="false" />
-        <activity
-            android:name=".Staff.StaffSettings"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Staff"
             android:exported="false" />
         <activity
             android:name=".Staff.StaffReport"
+            android:label="Report"
+            android:parentActivityName=".Staff.StaffSettings"
             android:exported="false" />
+        <activity
+            android:name=".Staff.StaffResetPassword"
+            android:label="Reset Password"
+            android:parentActivityName=".Staff.StaffSettings"
+            android:exported="false" />
+        <activity
+            android:name=".Staff.StaffSettings"
+            android:label="Settings"
+            android:parentActivityName=".Staff.StaffHomePage_RecyclerView.StaffHomepage"
+            android:exported="false" />
+
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+
+
+
+        <activity
+            android:name=".Volunteers.VolunteerHomePage"
+            android:label="Volunteer"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="false" />
+
+        <activity
+            android:name=".Volunteers.VolunteerMaps"
+            android:exported="false" />
+
+        <activity
+            android:name=".Volunteers.VolunteerReport"
+            android:label="Report"
+            android:parentActivityName=".Volunteers.VolunteerSettings"
+            android:exported="false" />
+
+        <activity
+            android:name=".Volunteers.VolunteerResetPassword"
+            android:label="Reset Password"
+            android:parentActivityName=".Volunteers.VolunteerSettings"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".Volunteers.VolunteerSettings"
+            android:label="Settings"
+            android:parentActivityName=".Volunteers.VolunteerHomePage"
+            android:exported="false" />
+
         <activity
             android:name=".Login"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

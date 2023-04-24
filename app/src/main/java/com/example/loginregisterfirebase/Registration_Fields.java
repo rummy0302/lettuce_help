@@ -1,4 +1,4 @@
-package com.example.loginregisterfirebase.Registration;
+package com.example.loginregisterfirebase;
 
 public class Registration_Fields {
      String fullname;

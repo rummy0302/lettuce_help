@@ -1,9 +1,5 @@
 package com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +35,6 @@ public class FirebaseData {
         listData = new ArrayList<>();
 
         adapter = new MyAdapter(listData);
-        Log.d(TAG,"Is This working?");
 
 
         DBR.addChildEventListener(new ChildEventListener() {

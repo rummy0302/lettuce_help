@@ -8,9 +8,7 @@
     android:background="@drawable/bg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".VolunteerReport">
-
-
+    tools:context=".Volunteers.VolunteerReport">
 
     <TextView
         android:id="@+id/report_title"

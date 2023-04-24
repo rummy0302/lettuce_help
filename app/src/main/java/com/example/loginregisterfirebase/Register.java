@@ -1,13 +1,7 @@
-package com.example.loginregisterfirebase.Registration;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+package com.example.loginregisterfirebase;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,13 +9,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.loginregisterfirebase.Login;
-import com.example.loginregisterfirebase.R;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.loginregisterfirebase.Validator.ContactNumberValidator;
 import com.example.loginregisterfirebase.Validator.EmailValidator;
 import com.example.loginregisterfirebase.Validator.NameValidator;
 import com.example.loginregisterfirebase.Validator.PasswordValidator;
-import com.example.loginregisterfirebase.Validator.UsertypeValidator;
+import com.example.loginregisterfirebase.Validator.UserTypeValidator;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -34,7 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Register extends AppCompatActivity implements NameValidator,EmailValidator, PasswordValidator, UsertypeValidator, ContactNumberValidator {
+public class Register extends AppCompatActivity {
 
 
 
@@ -45,7 +40,6 @@ public class Register extends AppCompatActivity implements NameValidator,EmailVa
 
         EditText fullname, email, contactnumber, password, conpassword;
         RadioGroup VolunteerOrStaffRadioGroup;
-
 
 
         // EditText
@@ -82,27 +76,37 @@ public class Register extends AppCompatActivity implements NameValidator,EmailVa
         int selectedusertype = VolunteerOrStaffRadioGroup.getCheckedRadioButtonId();
 
 
-
-
         //Register Button
         registerBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
-                //Firebase Authenticator
+                //Firebase Authenticator instance
                 FirebaseAuth auth = FirebaseAuth.getInstance();
 
-                //Firebase Realtime Database
+                //Firebase Realtime Database instance
                 DatabaseReference DBR = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-2f629-default-rtdb.firebaseio.com/");
 
-                //Validation
-                if (ValidateName(fullname) && ValidateEmail(email) && ValidateContactNumber(contactnumber)&& ValidatePassword(password) && ValidatePassword(conpassword)
-                && ValidateUser(VolunteerOrStaffRadioGroup) )
-                {
-                    RegisterUser(fullname, email, contactnumber, password,selectedusertype, auth, DBR);}
+                //Validation Objects
+                EmailValidator emailValidator= new EmailValidator();
+                NameValidator nameValidator = new NameValidator();
+                ContactNumberValidator contactNumberValidator=new ContactNumberValidator();
+                PasswordValidator passwordValidator= new PasswordValidator();
+                UserTypeValidator userTypeValidator=new UserTypeValidator();
+
+                //Validate
+                if (nameValidator.Validate(fullname,Register.this)
+                        && emailValidator.Validate(email,Register.this)
+                        && contactNumberValidator.Validate(contactnumber,Register.this)
+                        && passwordValidator.Validate(password, Register.this)
+                        && passwordValidator.Validate(conpassword,Register.this)
+                        && userTypeValidator.Validate(VolunteerOrStaffRadioGroup,Register.this)) {
+                    RegisterUser(fullname, email, contactnumber, password, selectedusertype, auth, DBR);
                 }
-            });
-        }
+            }
+        });
+    }
 
     private void RegisterUser(EditText fullname, EditText email, EditText contactnumber, EditText password, int selectedusertype, FirebaseAuth auth, DatabaseReference DBR) {
         auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
@@ -152,84 +156,6 @@ public class Register extends AppCompatActivity implements NameValidator,EmailVa
     }
 
 
-    //============== Validation methods =========//
-    @Override
-    public Boolean ValidateName(EditText e) {
-        if (e.getText().toString().isEmpty()) {
-            Toast.makeText(Register.this, "Please enter your full name", Toast.LENGTH_SHORT).show();
-            e.setError("Full name is required");
-            e.requestFocusFromTouch();
-            return false;
-        } else {
-            return true;
-            }
-    }
-    @Override
-    public Boolean ValidatePassword(EditText e) {
-        if (e.getText().toString().isEmpty()) {
-            Toast.makeText(Register.this, "Please enter your password", Toast.LENGTH_SHORT).show();
-            e.setError("Password is required");
-            e.requestFocus();
-            return false;
-        }
-        else if (e.getText().toString().length() < 8 || e.getText().toString().length() > 12) {
-            Toast.makeText(Register.this, "Password should be 8 to 12 characters long", Toast.LENGTH_SHORT).show();
-            e.setError("8-12 character password required");
-            e.requestFocus();
-            e.clearComposingText();
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-
-    @Override
-    public Boolean ValidateEmail(EditText e) {
-        if (e.getText().toString().isEmpty()) {
-            Toast.makeText(Register.this, "Please enter your email", Toast.LENGTH_SHORT).show();
-            e.setError("Email is required");
-            e.requestFocus();
-            return false;
-        }
-        else if (!Patterns.EMAIL_ADDRESS.matcher(e.getText().toString()).matches()) {
-            Toast.makeText(Register.this, "Please re-enter your email", Toast.LENGTH_SHORT).show();
-            e.setError("Valid email is required");
-            e.requestFocus();
-            return false;
-        }else {
-            return true;
-        }
-    }
-    @Override
-    public Boolean ValidateUser(RadioGroup RG) {
-        if (RG.getCheckedRadioButtonId()==-1 ) {
-                Toast.makeText(Register.this, "Please select volunteer or staff", Toast.LENGTH_SHORT).show();
-                RG.requestFocus();
-                return false;
-            }
-        else {
-            return true;
-        }
-    }
-
-    @Override
-    public Boolean ValidateContactNumber(EditText e) {
-            if ((e.getText().toString().isEmpty())){
-                Toast.makeText(Register.this, "Please enter your mobile number", Toast.LENGTH_SHORT).show();
-                e.setError("Mobile number is required");
-                e.requestFocus();
-                return false;
-            } else if((e.getText().toString().length() != 8)){
-                Toast.makeText(Register.this, "Please re-enter your mobile number", Toast.LENGTH_SHORT).show();
-                e.setError("Mobile number should be 8 digits");
-                e.requestFocus();
-                return false;
-            }
-            else {
-                return true;
-            }
-    }
 }
 
 

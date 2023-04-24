@@ -1,12 +1,13 @@
 <resources>
-    <string name="app_name">LoginRegisterFirebase</string>
+    <string name="app_name">Lettuce Help</string>
     <string name="button_submit">Submit</string>
-
+    <string name="menu_Open">Open</string>
+    <string name="menu_Close">Close</string>
     <string name="name_hint">Name</string>
 
     <string name="email_hint">Email</string>
 
-<!--    bottom nav bar-->
+    <!--    bottom nav bar-->
     <string name="login">Login</string>
     <string name="box_location">Box Location</string>
     <string name="home">Home</string>

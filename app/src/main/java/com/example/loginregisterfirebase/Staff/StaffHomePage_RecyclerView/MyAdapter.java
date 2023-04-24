@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.loginregisterfirebase.R;
@@ -41,10 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
             BoxStatusBar =itemView.findViewById(R.id.recyclerViewProgressBar);
             BoxCapacity=itemView.findViewById(R.id.recyclerViewBoxStatus);
             BoxBtn=itemView.findViewById(R.id.recylcerViewBtn);
-
-
-
-            }
+        }
 
     }
 
@@ -54,7 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
     }
 
     @Override
-    public MyAdapter.MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_staff_recyclerview_items,parent,false);
         return new MyViewholder(view);
     }
@@ -67,13 +65,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewholder>{
      *  Formula: (100 - (distance/25 *100) ) %
     ****/
     @Override
-    public void onBindViewHolder(@NonNull MyAdapter.MyViewholder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewholder holder, int position) {
         RecyclerViewItems data= listArray.get(position);
         holder.BoxAddress.setText(data.getAddress());
         holder.BoxUnitNumber.setText(data.getUnitNumber());
         holder.BoxPostalCode.setText(data.getBoxPostalCode());
         holder.BoxStatusBar.setProgress(100-(data.getStatus()*4));
         holder.BoxCapacity.setText(100-(data.getStatus()*4)+"%");
+
+        if( (100-(data.getStatus()*4)) >75 ){
+            int redclr = ContextCompat.getColor( holder.itemView.getContext(), R.color.red);
+            holder.BoxBtn.setBackgroundColor(redclr);
+        }
+        else {
+            int blue = ContextCompat.getColor(holder.itemView.getContext(),R.color.blue);
+            holder.BoxBtn.setBackgroundColor(blue);
+        }
+
         holder.BoxBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

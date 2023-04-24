@@ -8,7 +8,7 @@
     android:background="@drawable/bg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".VolunteerHomepage">
+    tools:context=".Volunteers.VolunteerHomePage">
 
     <TextView
         android:id="@+id/fooddonation"
@@ -23,7 +23,6 @@
         android:textColor="#CC000000"
         android:textSize="23sp"
         android:textStyle="bold" />
-
 
     <WebView
         android:id="@+id/foodDonationWebView"

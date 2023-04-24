@@ -1,7 +1,6 @@
 package com.example.loginregisterfirebase.Staff;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,11 +9,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.loginregisterfirebase.Login;
 import com.example.loginregisterfirebase.R;
 import com.example.loginregisterfirebase.Report_Fields;
 import com.example.loginregisterfirebase.Staff.StaffHomePage_RecyclerView.StaffHomepage;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.loginregisterfirebase.Validator.ContactNumberValidator;
+import com.example.loginregisterfirebase.Validator.EmailValidator;
+import com.example.loginregisterfirebase.Validator.NameValidator;
+import com.example.loginregisterfirebase.Validator.ReportFieldValidator;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,42 +31,27 @@ public class StaffReport extends AppCompatActivity {
         phone = findViewById(R.id.contact_number);
         details = findViewById(R.id.details_content);
         final Button submit_issue = findViewById(R.id.submitBtn);
-        submit_issue.setOnClickListener(new View.OnClickListener()
-        {
+        submit_issue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-                        startActivity(new Intent(StaffReport.this, Login.class));
-                    }
-                    //Obtain entered data
-                    final String nameStr = name.getText().toString();
-                    final String emailStr = email.getText().toString();
-                    final String contactNumberStr = phone.getText().toString();
-                    final String detailsStr = details.getText().toString();
 
-                    //check for empty editTexts, all must be filled
-                    if (nameStr.isEmpty()) {
-                        Toast.makeText(StaffReport.this, "Please enter your name!", Toast.LENGTH_SHORT).show();
-                        name.setError("Name is required");
-                        name.requestFocus(); }
+                //Validator objects
+                EmailValidator emailValidator = new EmailValidator();
+                NameValidator nameValidator = new NameValidator();
+                ContactNumberValidator contactNumberValidator = new ContactNumberValidator();
+                ReportFieldValidator reportFieldValidator = new ReportFieldValidator();
 
-                    if (emailStr.isEmpty()) {
-                        Toast.makeText(StaffReport.this, "Please enter your email!", Toast.LENGTH_SHORT).show();
-                        email.setError("Email is required");
-                        email.requestFocus(); }
+                //Validation
+                if (nameValidator.Validate(name, StaffReport.this)
+                        && emailValidator.Validate(email, StaffReport.this)
+                        && contactNumberValidator.Validate(phone, StaffReport.this)
+                        && reportFieldValidator.Validate(details, StaffReport.this)) {
 
-                    if (contactNumberStr.isEmpty()) {
-                        Toast.makeText(StaffReport.this, "Please enter your contact number!", Toast.LENGTH_SHORT).show();
-                        phone.setError("Phone is required");
-                        phone.requestFocus(); }
+                    String nameStr = name.getText().toString();
+                    String emailStr = email.getText().toString();
+                    String contactNumberStr = phone.getText().toString();
+                    String detailsStr = details.getText().toString();
 
-                    if (detailsStr.isEmpty()) {
-                        Toast.makeText(StaffReport.this, "Please enter your issue!", Toast.LENGTH_SHORT).show();
-                        details.setError("Issue cannot be empty");
-                        details.requestFocus(); }
-
-                    // upload data
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference databaseLink = database.getReference("Report");
                     String key = databaseLink.push().getKey();
@@ -74,53 +60,12 @@ public class StaffReport extends AppCompatActivity {
                     databaseLink.child(key).setValue(report);
                     Toast.makeText(StaffReport.this, "Your report has been made! Our team will contact you in 3 working days.", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(StaffReport.this, StaffHomepage.class));
-
-
-                } catch (NullPointerException e) {
-                    Toast.makeText(StaffReport.this, "Please fill in all the fields!", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
 
-
-
-        //=========== NAV BAR ==========//
-        Button mapBtn = findViewById(R.id.staffMapBtn);
-        Button homebtn=findViewById(R.id.staffHomeBtn);
-        Button settingsbtn=findViewById(R.id.staffSettingsBtn);
-
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri.Builder uriBuilder = new Uri.Builder();
-                /** geo:0.0?q=ChangiAirport */
-
-                uriBuilder.scheme("geo").opaquePart("0.0")
-                        .appendQueryParameter("q","ChangiAirport");
-
-                Uri uri = uriBuilder.build();
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(uri);
-                if( intent.resolveActivity(getPackageManager()) != null){
-                    startActivity(intent);
-                }
-            }
-        });
-
-        settingsbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //open Register activity
-                startActivity(new Intent(StaffReport.this,StaffSettings.class));
-            }
-        });
-
-        homebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(StaffReport.this,StaffHomepage.class));
-
-            }
         });
     }
 }
+
+
+
