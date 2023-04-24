@@ -1,4 +1,4 @@
-# lettuce_help - Final branch : 'merged'
+# Lettuce_help - Final branch : 'merged'
 
 Lettuce Help is an app that primarily addresses inefficiencies in the donation and collection process of FoodBank boxes.  When it comes to food donations,  Donors occasionally encounter overfilled boxes due to the manual nature of inspecting these boxes - i.e, when a FoodBank box is reaching full capacity, a volunteer must physically inspect the box and notify a FoodBank staff that the box is ready for collection. If this process is not carried out, food donations will accumulate in the box and donors, who wish to donate to that same box, will either leave the donated food crowding around the box (pest hazard) or find another Foodbank box to donate to (additional effort and time wasted).  Both of these scenarios are not ideal. 
 
